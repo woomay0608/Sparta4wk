@@ -7,5 +7,4 @@ public class Player : MonoBehaviour
 
     public int PlayerHealth;
     public int JumpCount;
-
 }
