@@ -6,15 +6,17 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody rigidbody;
-
-    //이동 관련
+    Animator animator;
+    public GameObject PlayerBody;
+    
+    [Header("Move")]
     Vector3 MoveDir;
     public float MoveSpeed;
-    //점프 관련
+    [Header("Jump")]
     public float JumpPower;
     int Jumpc;
     public LayerMask Layer;
-    //카메라
+    [Header("Camera")]
     Vector3 CameraDir;
     public Transform CameraContainer;
     float CameraX;
@@ -26,11 +28,9 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
-        
-    }
-    private void Update()
-    {
-        Debug.DrawRay(transform.forward, new Vector3(0f, -1f, 0f), new Color(1f,1f,0f));
+        animator = PlayerBody.GetComponentInChildren<Animator>();
+
+
     }
 
     private void FixedUpdate()
@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour
         n *= MoveSpeed;
         n.y = rigidbody.velocity.y;
         rigidbody.velocity = n;
+        
+        animator.SetBool("IsMoving", MoveDir.magnitude > 0);
     }
 
     public void OnJump()
@@ -78,6 +80,7 @@ public class PlayerController : MonoBehaviour
         {
        
             rigidbody.AddForce(Vector3.up * JumpPower, ForceMode.Impulse);
+            animator.SetTrigger("IsJump");
             PlayerManager.Instance.Player.curJumpCount--;
         }
         
