@@ -12,7 +12,8 @@ public class Player : MonoBehaviour
     public float MoveSpeed;
     //점프 관련
     public float JumpPower;
-    private bool IsJump = true;
+    int Jumpc;
+    public LayerMask Layer;
     //카메라
     Vector3 CameraDir;
     public Transform CameraContainer;
@@ -21,9 +22,15 @@ public class Player : MonoBehaviour
     [Range(-180f, 180f)] public float MinCamera;
     [Range(-180f, 180f)] public float MaxCamera;
 
+    
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        
+    }
+    private void Update()
+    {
+        Debug.DrawRay(transform.forward, new Vector3(0f, -1f, 0f), new Color(1f,1f,0f));
     }
 
     private void FixedUpdate()
@@ -49,18 +56,35 @@ public class Player : MonoBehaviour
 
     public void OnJump()
     {
-        Debug.Log("Jump");
-        if(IsJump)
-        StartCoroutine(Jump());
+        if(PlayerManager.Instance.IsPlayerGround)
+        {
+            Jumpc = PlayerManager.Instance.Player.JumpCount;
+            Jump();
+        }
+        else
+        {
+            Jump();
+        }
+
+        
     }
 
-    private IEnumerator Jump()
+    private void Jump()
     {
-        rigidbody.AddForce(Vector3.up * JumpPower, ForceMode.Impulse);
-        IsJump = false;
-        yield return new WaitForSeconds(JumpPower/5f);
-        IsJump = true;
+        if(Jumpc == 0) 
+        {
+            return; 
+        }
+        else
+        {
+       
+            rigidbody.AddForce(Vector3.up * JumpPower, ForceMode.Impulse);
+            Jumpc--;
+        }
+        
     }
+
+ 
 
 
     public void OnLook(InputValue value)
@@ -80,6 +104,8 @@ public class Player : MonoBehaviour
 
         //CameraContainer.transform.eulerAngles += new Vector3(-CameraDir.x, 0f, 0f);
     }
-    
+
+
+
 
 }
