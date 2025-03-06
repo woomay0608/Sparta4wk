@@ -16,7 +16,10 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 n = dir.x * transform.forward + transform.right * dir.y;
+        Vector3 n = dir.x * transform.right +transform.forward * dir.y;
+        n *=  MoveSpeed;
+        n.y = rigidbody.velocity.y;
+        rigidbody.velocity = n;
 
     }
 
