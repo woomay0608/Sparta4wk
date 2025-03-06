@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
     {
         if(PlayerManager.Instance.IsPlayerGround)
         {
-            PlayerManager.Instance.Player.SetJumpCount();
             Jump();
         }
         else

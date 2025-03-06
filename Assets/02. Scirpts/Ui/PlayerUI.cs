@@ -39,13 +39,23 @@ public class PlayerUI : MonoBehaviour
         int UnActiveheartChild = Heart.transform.childCount - PlayerManager.Instance.Player.curhealth;
         int UnActivejumpChild = Jump.transform.childCount - PlayerManager.Instance.Player.curJumpCount;
 
-        for(int i = 0;  i < UnActiveheartChild; i++)
+        
+
+        for (int i = 0;  i < UnActiveheartChild; i++)
         {
-            Heart.transform.GetChild(Heart.transform.childCount - i).GetComponent<Image>().color = new Color(0f,0f,0f);
+            Heart.transform.GetChild(Heart.transform.childCount - i).GetComponent<Image>().color = new Color(0f,0f,0f); 
         }
         for (int i = 0; i < UnActivejumpChild; i++)
         {
-            Jump.transform.GetChild(Jump.transform.childCount - i-1).GetComponent<Image>().color = new Color(0f, 0f, 0f);
+            Jump.transform.GetChild(Jump.transform.childCount - i -1).GetComponent<Image>().color = new Color(0f, 0f, 0f);
+        }
+        for (int i = 0; i < PlayerManager.Instance.Player.curhealth; i++)
+        {
+            Heart.transform.GetChild(i).GetComponent<Image>().color = new Color(1f, 1f, 1f);
+        }
+        for (int i = 0; i < PlayerManager.Instance.Player.curJumpCount; i++)
+        {
+            Jump.transform.GetChild(i).GetComponent<Image>().color = new Color(1f, 1f, 1f);
         }
 
 

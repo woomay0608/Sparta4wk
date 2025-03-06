@@ -10,6 +10,7 @@ public class Ground : MonoBehaviour
         if(collision.collider.CompareTag("Player"))
         {
             PlayerManager.Instance.IsPlayerGround = true;
+            PlayerManager.Instance.Player.SetJumpCount();
         }
 
     }
