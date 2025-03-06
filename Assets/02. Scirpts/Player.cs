@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
 
     Vector3 dir;
     public float MoveSpeed;
+    public float JumpPower;
+    private bool IsJump = true;
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -22,16 +24,31 @@ public class Player : MonoBehaviour
         rigidbody.velocity = n;
 
     }
-
-
     public void OnMove(InputValue value)
     {
         dir = value.Get<Vector2>();
 
         Debug.Log($"{dir.x} {dir.y}");
-
-        
- 
     }
+
+    public void OnJump()
+    {
+        Debug.Log("why?");
+
+        if(IsJump)
+        StartCoroutine(Jump());
+        
+  
+    }
+
+    public IEnumerator Jump()
+    {
+        rigidbody.AddForce(Vector3.up * JumpPower, ForceMode.Impulse);
+        IsJump = false;
+        yield return new WaitForSeconds(JumpPower/5f);
+        IsJump = true;
+    }
+
+    
 
 }
