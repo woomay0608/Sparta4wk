@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
     {
         if(PlayerManager.Instance.IsPlayerGround)
         {
-            Jumpc = PlayerManager.Instance.Player.JumpCount;
+            PlayerManager.Instance.Player.SetJumpCount();
             Jump();
         }
         else
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if(Jumpc == 0) 
+        if(PlayerManager.Instance.Player.curJumpCount == 0) 
         {
             return; 
         }
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
         {
        
             rigidbody.AddForce(Vector3.up * JumpPower, ForceMode.Impulse);
-            Jumpc--;
+            PlayerManager.Instance.Player.curJumpCount--;
         }
         
     }
