@@ -24,7 +24,7 @@ public class ItemInfo : ScriptableObject
     public ItemType Type;
     public GameObject Prefabs;
 
-    public Image Icon;
+    public Sprite Icon;
 
 
     public bool IsConsumable;

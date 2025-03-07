@@ -40,12 +40,14 @@ public class PlayerRay : MonoBehaviour
             {
                 Name.text = itemObject.GetName();
                 Description.text = itemObject.GetDescription();
+                PlayerManager.Instance.Player.Curiteminfo = itemObject.info;
             }
         }
         else
         {
             Name.text = string.Empty;
             Description.text = string.Empty; ;
+            PlayerManager.Instance.Player.Curiteminfo = null;
         }
     }
 

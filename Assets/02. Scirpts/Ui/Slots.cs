@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class Slots : MonoBehaviour
 {
-    private IndiSlot[] slots;
-
-
+    public IndiSlot[] slots;
     private void Start()
     {
-        slots = new IndiSlot[transform.childCount];
+        
         for (int i = 0; i < slots.Length; i++) 
         {
             slots[i].index = i;
+        }
+    }
+
+    public void CapturedItemToInvetory(ItemInfo itemInfo)
+    {
+        for (int i = 0;i < slots.Length;i++) 
+        {
+            if (slots[i].SomeItemComein)
+            {
+                continue;
+            }
+            else
+            {
+                slots[i].icon.sprite =itemInfo.Icon;
+                slots[i].SomeItemComein = true;
+                break;
+            }
+          
         }
     }
 

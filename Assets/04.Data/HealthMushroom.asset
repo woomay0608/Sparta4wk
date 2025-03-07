@@ -16,5 +16,6 @@ MonoBehaviour:
   ItemDescrip: Mario? Is That you?
   Type: 0
   Prefabs: {fileID: 911070445325493590, guid: fa4f7be89eb9ab84daf6a0038355c866, type: 3}
+  Icon: {fileID: 21300040, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   IsConsumable: 1
   Value: 1

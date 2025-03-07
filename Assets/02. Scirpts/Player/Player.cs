@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public int JumpCount;
     public int curJumpCount;
 
+    public ItemInfo Curiteminfo;
+
     private void Start()
     {
         curhealth = PlayerHealth;
