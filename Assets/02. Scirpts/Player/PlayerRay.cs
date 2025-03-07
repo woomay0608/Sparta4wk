@@ -38,11 +38,8 @@ public class PlayerRay : MonoBehaviour
         {
             if (hit.transform.TryGetComponent(out itemObject))
             {
-                Name.text = itemObject.name;
-                Description.text = itemObject.ItemDesription;
-   
-
-
+                Name.text = itemObject.GetName();
+                Description.text = itemObject.GetDescription();
             }
         }
         else

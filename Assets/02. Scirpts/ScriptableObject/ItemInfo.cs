@@ -18,17 +18,11 @@ public enum WhereTheConsum
 [CreateAssetMenu(fileName = "Item", menuName = "Scriptable Object/Item")]
 public class ItemInfo : ScriptableObject
 {
-
     public string ItemName;
     public string ItemDescrip;
     public ItemType Type;
     public GameObject Prefabs;
 
-
-
     public bool IsConsumable;
     public int Value;
-    
-
-
 }

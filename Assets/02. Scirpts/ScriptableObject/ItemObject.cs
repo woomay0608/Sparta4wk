@@ -5,17 +5,13 @@ using UnityEngine;
 public class ItemObject : MonoBehaviour
 {
     public ItemInfo info;
-    [HideInInspector]
-    public string ItemName;
-    [HideInInspector]
-    public string ItemDesription;
-    ItemType ItemType;
 
-
-    void Start()
+    public string GetName()
     {
-        ItemType = info.Type;
-        ItemName = info.ItemName;
-        ItemDesription = info.ItemDescrip;
+        return info.name;
+    }
+    public string GetDescription()
+    {
+        return info.ItemDescrip;
     }
 }
