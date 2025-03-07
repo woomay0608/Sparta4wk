@@ -54,7 +54,7 @@ public class PlayerUI : MonoBehaviour
 
         for (int i = 0;  i < UnActiveheartChild; i++)
         {
-            Heart.transform.GetChild(Heart.transform.childCount - i).GetComponent<Image>().color = new Color(0f,0f,0f); 
+            Heart.transform.GetChild(Heart.transform.childCount - i-1).GetComponent<Image>().color = new Color(0f,0f,0f); 
         }
         for (int i = 0; i < UnActivejumpChild; i++)
         {

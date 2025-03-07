@@ -14,9 +14,7 @@ public class Platform : MonoBehaviour
     [Range(0f, 10f)] public float speed;
     [Range(0, 100)] public int MaxDistance;
     [Range(0, 100)] public int MinDistance;
-    [Range(0, 10)] public float HowLongWating;
     public MovingType type;
-    Rigidbody rigidbody;
     Transform curTransform;
     Vector3 StartPosition;
 
@@ -25,7 +23,7 @@ public class Platform : MonoBehaviour
 
     private void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+
         curTransform = transform;
         StartPosition = transform.position;
     }
