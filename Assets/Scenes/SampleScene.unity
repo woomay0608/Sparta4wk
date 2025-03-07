@@ -7062,9 +7062,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c1a85aebd5210408deeab67328ece7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerHealth: 3
+  PlayerHealth: 1
   curhealth: 0
-  JumpCount: 3
+  JumpCount: 1
   curJumpCount: 0
   Curiteminfo: {fileID: 0}
   slot: {fileID: 0}

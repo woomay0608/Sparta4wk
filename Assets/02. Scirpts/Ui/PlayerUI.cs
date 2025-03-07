@@ -34,8 +34,19 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
+    public void PlusJumpCount()
+    {
+        if(PlayerManager.Instance.Player.JumpCount >= 3)
+        {
+            return;
+        }
+        Instantiate(JumpPrefabs, Jump.transform);
+        PlayerManager.Instance.Player.JumpCount += 1;
+    }
+
     public void UiUpdate()
     {
+        
         int UnActiveheartChild = Heart.transform.childCount - PlayerManager.Instance.Player.curhealth;
         int UnActivejumpChild = Jump.transform.childCount - PlayerManager.Instance.Player.curJumpCount;
 

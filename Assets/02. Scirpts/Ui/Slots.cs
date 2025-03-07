@@ -189,15 +189,9 @@ public class Slots : MonoBehaviour
             }
             else if (indi.GetItemInfo().WhereTheConsum == WhereTheConsum.Jump)
             {
-                Debug.Log($"OK2 {PlayerManager.Instance.Player.JumpCount}");
-                PlayerManager.Instance.Player.JumpCount += 1;
+                PlayerManager.Instance.playerUI.PlusJumpCount();
                 RemoveItem(indi);
-                Debug.Log($"OK4 {PlayerManager.Instance.Player.JumpCount}");
-                if (PlayerManager.Instance.Player.JumpCount > 3)
-                {
-                    Debug.Log($"OK6 {PlayerManager.Instance.Player.JumpCount}");
-                    PlayerManager.Instance.Player.JumpCount = 3;
-                }
+       
             }
         }
 
