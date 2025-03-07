@@ -5,7 +5,9 @@ using UnityEngine;
 public class ItemObject : MonoBehaviour
 {
     public ItemInfo info;
+    [HideInInspector]
     public string ItemName;
+    [HideInInspector]
     public string ItemDesription;
     ItemType ItemType;
 
