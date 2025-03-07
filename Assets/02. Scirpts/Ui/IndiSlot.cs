@@ -18,6 +18,8 @@ public class IndiSlot : MonoBehaviour
     ItemInfo itemInfo;
     private Button SelectItem;
     private Slots slots;
+    public bool Selected;
+    
 
 
     private void Start()
@@ -29,6 +31,10 @@ public class IndiSlot : MonoBehaviour
         SelectItem.onClick.AddListener(OnClickMe);
     }
 
+    public void OnOutline()
+    {
+        outline.enabled = Selected;
+    }
     public void SetIteminfo(ItemInfo itemInfos)
     {
         itemInfo = itemInfos;
@@ -42,9 +48,19 @@ public class IndiSlot : MonoBehaviour
     {
         if(itemInfo != null) 
         {
+            icon.gameObject.SetActive(true);
             icon.sprite = itemInfo.Icon;
             Count.text = itemCount > 0 ? itemCount.ToString() : string.Empty;
         }
+    }
+
+    public void Clear()
+    {
+        SetIteminfo(null);
+        SomeItemComein = false;
+        Count.text = string.Empty;
+        icon.gameObject.SetActive(false);
+
     }
 
     public void OnClickMe()

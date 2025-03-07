@@ -23,6 +23,7 @@ public class ItemInfo : ScriptableObject
     public string ItemName;
     public string ItemDescrip;
     public ItemType Type;
+    public WhereTheConsum WhereTheConsum;
     public GameObject Prefabs;
 
     public Sprite Icon;

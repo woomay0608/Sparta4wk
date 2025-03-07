@@ -12,6 +12,7 @@ public class Slots : MonoBehaviour
     [SerializeField] private Button RemoveBtn;
     [SerializeField] private TextMeshProUGUI SelectedItemName;
     [SerializeField] private TextMeshProUGUI SelectedItemDescri;
+    [SerializeField] private ItemInfo Default;
     private void Start()
     {
         for (int i = 0; i < slots.Length; i++) 
@@ -25,8 +26,14 @@ public class Slots : MonoBehaviour
     {
         for(int i = 0;i < slots.Length;i++)
         {
-            slots[i].Set();
+            if (slots[i].GetItemInfo() != null)
+                slots[i].Set();
+            else 
+                slots[i].Clear();
+
         }
+    
+        
     }
 
     public void CapturedItemToInvetory(ItemInfo itemInfo)
@@ -62,6 +69,8 @@ public class Slots : MonoBehaviour
         }
     }
 
+
+
     private bool IsSameItemInBackPack(ItemInfo itemInfo)
     {
         for(int i = 0 ;i < slots.Length;i++)
@@ -86,9 +95,24 @@ public class Slots : MonoBehaviour
             ItemInfoTextAndButtonSetDown();
             return;
         }
-        SelectedItemName.text = slots[index].GetItemInfo().ItemName;
-        SelectedItemDescri.text = slots[index].GetItemInfo().ItemDescrip;
+
+        PlayerManager.Instance.Player.SetIndiSlot(slots[index]);
+        Selected(index);
+        SelectedItemName.text = PlayerManager.Instance.Player.slot.GetItemInfo().ItemName;
+        SelectedItemDescri.text = PlayerManager.Instance.Player.slot.GetItemInfo().ItemDescrip;
         //각각 버튼에 함수 직접 달아주기
+        UseEquipBtn.gameObject.SetActive(true);
+        if (slots[index].GetItemInfo().Type == ItemType.Consum)
+        {
+            if(PlayerManager.Instance.Player.slot == null)
+            {
+                Debug.Log("Null이야");
+                return;
+            }
+            UseEquipBtn.onClick.RemoveAllListeners();
+            UseEquipBtn.onClick.AddListener(() => SlotItemuse(PlayerManager.Instance.Player.slot));
+        }
+
 
 
     }
@@ -99,6 +123,68 @@ public class Slots : MonoBehaviour
         SelectedItemDescri.text= string.Empty;
         UseEquipBtn.gameObject.SetActive(false);
         RemoveBtn.gameObject.SetActive(false);
+    }
+
+    public void Selected(int index)
+    {
+        for(int i = 0; i < slots.Length; i++) 
+        {
+            slots[i].Selected = false;
+            slots[i].OnOutline();
+        }
+        slots[index].Selected = true;
+        slots[index].OnOutline();
+    }
+
+
+
+    private void RemoveItem(IndiSlot indi)
+    {
+        indi.itemCount--;
+        if(indi.itemCount == 0)
+        {
+            indi.Clear();
+            ItemInfoTextAndButtonSetDown();
+        }
+      
+    }
+
+    private void SlotItemThrow()
+    {
+
+    }
+    private void SlotItemuse(IndiSlot indi)
+    {
+        if(indi.GetItemInfo().Type == ItemType.Consum)
+        {
+            if(indi.GetItemInfo().WhereTheConsum == WhereTheConsum.Health)
+            {
+                Debug.Log($"OK1 {PlayerManager.Instance.Player.curhealth}");
+                PlayerManager.Instance.Player.curhealth += 1;
+                RemoveItem(indi);
+                Debug.Log($"OK3 {PlayerManager.Instance.Player.curhealth}");
+                if (PlayerManager.Instance.Player.curhealth > PlayerManager.Instance.Player.PlayerHealth)
+                {
+                    PlayerManager.Instance.Player.curhealth = PlayerManager.Instance.Player.PlayerHealth;
+                    Debug.Log($"OK5 {PlayerManager.Instance.Player.curhealth}");
+                }
+
+            }
+            else if (indi.GetItemInfo().WhereTheConsum == WhereTheConsum.Jump)
+            {
+                Debug.Log($"OK2 {PlayerManager.Instance.Player.JumpCount}");
+                PlayerManager.Instance.Player.JumpCount += 1;
+                RemoveItem(indi);
+                Debug.Log($"OK4 {PlayerManager.Instance.Player.JumpCount}");
+                if (PlayerManager.Instance.Player.JumpCount > 3)
+                {
+                    Debug.Log($"OK6 {PlayerManager.Instance.Player.JumpCount}");
+                    PlayerManager.Instance.Player.JumpCount = 3;
+                }
+            }
+        }
+
+        //장비는 나중에 추가할 예정
     }
 
 }

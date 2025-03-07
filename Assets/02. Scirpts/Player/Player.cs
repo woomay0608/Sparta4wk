@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public int curJumpCount;
 
     public ItemInfo Curiteminfo;
+    public IndiSlot slot;
 
     private void Start()
     {
@@ -21,5 +22,10 @@ public class Player : MonoBehaviour
     public void SetJumpCount()
     {
         curJumpCount = JumpCount;
+    }
+    public void SetIndiSlot(IndiSlot indi)
+    {
+        slot = indi;
+        
     }
 }
