@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum ItemType
 {
@@ -22,6 +23,9 @@ public class ItemInfo : ScriptableObject
     public string ItemDescrip;
     public ItemType Type;
     public GameObject Prefabs;
+
+    public Image Icon;
+
 
     public bool IsConsumable;
     public int Value;
