@@ -11,7 +11,7 @@ public enum MovingType
 
 public class Platform : MonoBehaviour
 {
-    [Range(0f,10f)] public float speed;
+    [Range(0f, 10f)] public float speed;
     [Range(0, 100)] public int MaxDistance;
     [Range(0, 100)] public int MinDistance;
     [Range(0, 10)] public float HowLongWating;
@@ -20,48 +20,104 @@ public class Platform : MonoBehaviour
     Transform curTransform;
     Vector3 StartPosition;
 
+    bool IsFront = true;
+
+
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         curTransform = transform;
         StartPosition = transform.position;
     }
-    private void Update()
+
+    private void FixedUpdate()
     {
-        StartCoroutine(Moving());
-
-
+        Moving();
     }
 
-    private IEnumerator Moving()
+    private void Moving()
     {
-        while (true)
+
+        switch (type)
         {
-            switch (type)
-            {
-                case MovingType.X:
-                    
-                   
-                    if (curTransform.position.x ==  StartPosition.x + MaxDistance)
+            case MovingType.X:
+
+                if (IsFront)
+                {
+                    curTransform.position = new Vector3(curTransform.position.x + speed * Time.deltaTime, curTransform.position.y, curTransform.position.z);
+
+                    if (curTransform.position.x > StartPosition.x + MaxDistance)
                     {
-                        curTransform.position = new Vector3(curTransform.position.x + speed, curTransform.position.y, curTransform.position.z);
-                        yield return new WaitForSeconds(HowLongWating);
+                        curTransform.position = new Vector3(StartPosition.x + MaxDistance, curTransform.position.y, curTransform.position.z);
+                        IsFront = false;
+
                     }
-                    else if(curTransform.position.x == StartPosition.x - MinDistance)
+                }
+                else
+                {
+                    curTransform.position = new Vector3(curTransform.position.x - speed * Time.deltaTime, curTransform.position.y, curTransform.position.z);
+
+                    if (curTransform.position.x < StartPosition.x - MinDistance)
                     {
-                        curTransform.position = new Vector3(curTransform.position.x - speed, curTransform.position.y, curTransform.position.z);
-                        yield return new WaitForSeconds(HowLongWating);
+                        curTransform.position = new Vector3(StartPosition.x - MinDistance, curTransform.position.y, curTransform.position.z);
+                        IsFront = true;
+
                     }
+                }
 
 
-                    break;
-                case MovingType.Z:
-                    break;
-                case MovingType.Y:
-                    break;
+                break;
+            case MovingType.Z:
+                if (IsFront)
+                {
+                    curTransform.position = new Vector3(curTransform.position.x , curTransform.position.y, curTransform.position.z + speed * Time.deltaTime);
 
-            }
+                    if (curTransform.position.z > StartPosition.z + MaxDistance)
+                    {
+                        curTransform.position = new Vector3(curTransform.position.x , curTransform.position.y, StartPosition.z + MaxDistance);
+                        IsFront = false;
+
+                    }
+                }
+                else
+                {
+                    curTransform.position = new Vector3(curTransform.position.x , curTransform.position.y, curTransform.position.z - speed * Time.deltaTime );
+
+                    if (curTransform.position.z < StartPosition.z - MinDistance)
+                    {
+                        curTransform.position = new Vector3(curTransform.position.x, curTransform.position.y, StartPosition.z- MinDistance);
+                        IsFront = true;
+
+                    }
+                }
+                break;
+            case MovingType.Y:
+                if (IsFront)
+                {
+                    curTransform.position = new Vector3(curTransform.position.x , curTransform.position.y + speed * Time.deltaTime, curTransform.position.z);
+
+                    if (curTransform.position.y > StartPosition.y + MaxDistance)
+                    {
+                        curTransform.position = new Vector3(curTransform.position.x , StartPosition.y + MaxDistance, curTransform.position.z);
+                        IsFront = false;
+
+                    }
+                }
+                else
+                {
+                    curTransform.position = new Vector3(curTransform.position.x , curTransform.position.y - speed * Time.deltaTime, curTransform.position.z);
+
+                    if (curTransform.position.y < StartPosition.y - MinDistance)
+                    {
+                        curTransform.position = new Vector3(curTransform.position.x, StartPosition.y - MinDistance, curTransform.position.z);
+                        IsFront = true;
+
+                    }
+                }
+                break;
+
         }
+
 
 
     }

@@ -11,6 +11,7 @@ public class Ground : MonoBehaviour
         {
             PlayerManager.Instance.IsPlayerGround = true;
             PlayerManager.Instance.Player.SetJumpCount();
+            collision.transform.parent = transform;
         }
 
     }
@@ -20,6 +21,7 @@ public class Ground : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             PlayerManager.Instance.IsPlayerGround = false;
+            collision.transform.parent = null;
         }
     }
 

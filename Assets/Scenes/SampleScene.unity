@@ -19382,10 +19382,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ef3b77ca2982b4981479978c2ea68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsZAxis: 1
+  speed: 2
   MaxDistance: 10
   MinDistance: 10
   HowLongWating: 2.79
+  type: 0
 --- !u!54 &8502487838559346626
 Rigidbody:
   m_ObjectHideFlags: 0
