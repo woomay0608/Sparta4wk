@@ -31,6 +31,17 @@ public class Slots : MonoBehaviour
             else 
                 slots[i].Clear();
 
+            if(i >=1)
+            {
+                if (slots[i-1].GetItemInfo() == null)
+                {
+                    slots[i - 1].SetIteminfo(slots[i].GetItemInfo());
+                    slots[i - 1].itemCount = slots[i].itemCount;
+                    slots[i-1].Set();
+                    slots[i].Clear();
+                }
+            }
+
         }
     
         
@@ -102,6 +113,7 @@ public class Slots : MonoBehaviour
         SelectedItemDescri.text = PlayerManager.Instance.Player.slot.GetItemInfo().ItemDescrip;
         //각각 버튼에 함수 직접 달아주기
         UseEquipBtn.gameObject.SetActive(true);
+        RemoveBtn.gameObject.SetActive(true);
         if (slots[index].GetItemInfo().Type == ItemType.Consum)
         {
             if(PlayerManager.Instance.Player.slot == null)
@@ -111,6 +123,11 @@ public class Slots : MonoBehaviour
             }
             UseEquipBtn.onClick.RemoveAllListeners();
             UseEquipBtn.onClick.AddListener(() => SlotItemuse(PlayerManager.Instance.Player.slot));
+
+            RemoveBtn.onClick.RemoveAllListeners();
+            RemoveBtn.onClick.AddListener(() => RemoveItem(PlayerManager.Instance.Player.slot));
+
+
         }
 
 
@@ -149,9 +166,9 @@ public class Slots : MonoBehaviour
       
     }
 
-    private void SlotItemThrow()
+    private void SlotItemThrow(IndiSlot indi)
     {
-
+        RemoveItem(indi);
     }
     private void SlotItemuse(IndiSlot indi)
     {
