@@ -19,6 +19,7 @@ public enum WhereTheConsum
 [CreateAssetMenu(fileName = "Item", menuName = "Scriptable Object/Item")]
 public class ItemInfo : ScriptableObject
 {
+    public int Id;
     public string ItemName;
     public string ItemDescrip;
     public ItemType Type;
@@ -29,4 +30,8 @@ public class ItemInfo : ScriptableObject
 
     public bool IsConsumable;
     public int Value;
+
+    public bool IsStack;
+ 
+
 }
