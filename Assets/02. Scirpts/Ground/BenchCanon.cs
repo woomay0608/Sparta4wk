@@ -15,8 +15,9 @@ public class BenchCanon : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(ray,10f,layer))
         {
-            Instantiate(Bullet);
-            Bullet.GetComponent<Rigidbody>().AddForce(transform.position + transform.forward * 3f,ForceMode.Impulse);
+            Instantiate(Bullet, transform);
+            Debug.Log(transform.position + transform.forward * 10f);
+            Bullet.GetComponent<Rigidbody>().AddForce(transform.forward * 10f, ForceMode.Impulse);
           
         }
     }
