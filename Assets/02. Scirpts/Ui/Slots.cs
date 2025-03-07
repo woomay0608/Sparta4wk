@@ -115,22 +115,13 @@ public class Slots : MonoBehaviour
         UseEquipBtn.gameObject.SetActive(true);
         RemoveBtn.gameObject.SetActive(true);
         if (slots[index].GetItemInfo().Type == ItemType.Consum)
-        {
-            if(PlayerManager.Instance.Player.slot == null)
-            {
-                Debug.Log("NullÀÌ¾ß");
-                return;
-            }
+        { 
             UseEquipBtn.onClick.RemoveAllListeners();
             UseEquipBtn.onClick.AddListener(() => SlotItemuse(PlayerManager.Instance.Player.slot));
 
             RemoveBtn.onClick.RemoveAllListeners();
             RemoveBtn.onClick.AddListener(() => RemoveItem(PlayerManager.Instance.Player.slot));
-
-
         }
-
-
 
     }
 
@@ -176,16 +167,12 @@ public class Slots : MonoBehaviour
         {
             if(indi.GetItemInfo().WhereTheConsum == WhereTheConsum.Health)
             {
-                Debug.Log($"OK1 {PlayerManager.Instance.Player.curhealth}");
                 PlayerManager.Instance.Player.curhealth += 1;
                 RemoveItem(indi);
-                Debug.Log($"OK3 {PlayerManager.Instance.Player.curhealth}");
                 if (PlayerManager.Instance.Player.curhealth > PlayerManager.Instance.Player.PlayerHealth)
                 {
                     PlayerManager.Instance.Player.curhealth = PlayerManager.Instance.Player.PlayerHealth;
-                    Debug.Log($"OK5 {PlayerManager.Instance.Player.curhealth}");
                 }
-
             }
             else if (indi.GetItemInfo().WhereTheConsum == WhereTheConsum.Jump)
             {

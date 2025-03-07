@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerRay : MonoBehaviour
 {
 
-    Camera cam;
     public LayerMask layerMask;
 
     ItemObject itemObject;
@@ -16,14 +15,15 @@ public class PlayerRay : MonoBehaviour
 
     private void Start()
     {
-        cam = Camera.main;
+        
         Name.text = string.Empty;
         Description.text = string.Empty; ;
     }
 
     private void Update()
     {
-        Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2));
+        Vector3 RayPosition = transform.position + transform.up * 0.8f;
+        Ray ray =  new Ray(RayPosition, transform.forward);
         Debug.DrawRay(ray.origin, ray.direction);
         RaycastHit hit;
         ShowItemNameAndDescriptionToRay(out hit,ray);
