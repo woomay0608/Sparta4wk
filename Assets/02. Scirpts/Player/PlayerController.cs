@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     Vector3 MoveDir;
     [Header("Move")]
     public float MoveSpeed;
+    private float CurSpeed;
 
     [Header("Jump")]
     public float JumpPower;
@@ -39,8 +40,12 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         animator = PlayerBody.GetComponentInChildren<Animator>();
+        CurSpeed = MoveSpeed;
 
-
+    }
+    private void Update()
+    {
+        Debug.Log(MoveSpeed);
     }
 
     private void FixedUpdate()
@@ -132,6 +137,20 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    private IEnumerator Speedup()
+    {
+        MoveSpeed = CurSpeed + 3f;
+        yield return new WaitForSeconds(3f);
+        Debug.Log("hii");
+        MoveSpeed = CurSpeed;
+    }
+
+    public void StartSpeedup()
+    {
+        StartCoroutine(Speedup());
+    }
+
 
 
 }

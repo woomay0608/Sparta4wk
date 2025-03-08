@@ -176,9 +176,13 @@ public class Slots : MonoBehaviour
             }
             else if (indi.GetItemInfo().WhereTheConsum == WhereTheConsum.Jump)
             {
-                PlayerManager.Instance.playerUI.PlusJumpCount();
+                PlayerManager.Instance.PlayerUI.PlusJumpCount();
                 RemoveItem(indi);
-       
+            }
+            else if(indi.GetItemInfo().WhereTheConsum == WhereTheConsum.Speed)
+            {
+                PlayerManager.Instance.PlayerController.StartSpeedup();
+                RemoveItem(indi);
             }
         }
 

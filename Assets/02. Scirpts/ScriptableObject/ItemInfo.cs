@@ -12,7 +12,8 @@ public enum ItemType
 public enum WhereTheConsum
 {
     Health,
-    Jump
+    Jump,
+    Speed
 }
 
 

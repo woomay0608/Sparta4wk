@@ -9,12 +9,14 @@ public class PlayerManager : MonoBehaviour
 
 
 
-    public Player _player;
-    public Player Player { get { return _player; } set { _player = value; } }
+    private Player _player;
+    public Player Player { get { return _player; }    }
 
-    public PlayerUI playerUI;
-    public PlayerUI PlayerUIs { get { return playerUI; } set { playerUI = value; } }
+    private PlayerUI playerUI;
+    public PlayerUI PlayerUI { get { return playerUI; }  }
 
+    private PlayerController playerController;
+    public PlayerController PlayerController { get { return playerController; } }
 
     public bool IsPlayerGround = false;
 
@@ -24,5 +26,9 @@ public class PlayerManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        _player = FindAnyObjectByType<Player>();
+        playerUI = FindAnyObjectByType<PlayerUI>();
+        playerController = FindAnyObjectByType<PlayerController>();
     }
 }

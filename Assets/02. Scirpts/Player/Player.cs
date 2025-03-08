@@ -28,4 +28,7 @@ public class Player : MonoBehaviour
         slot = indi;
         
     }
+
+
+
 }

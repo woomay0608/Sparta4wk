@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a16d635d3151e3499e47367a0573302, type: 3}
-  m_Name: HealthMushroom
+  m_Name: CloudBread
   m_EditorClassIdentifier: 
-  Id: 0
-  ItemName: HealthMushroom
-  ItemDescrip: Health Up
+  Id: 3
+  ItemName: CloudBread
+  ItemDescrip: Speed Up For 10 Seconds
   Type: 0
-  WhereTheConsum: 0
-  Prefabs: {fileID: 911070445325493590, guid: fa4f7be89eb9ab84daf6a0038355c866, type: 3}
-  Icon: {fileID: 21300040, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  WhereTheConsum: 2
+  Prefabs: {fileID: 2037860289836326689, guid: 40a79bd9ac84a3d4ebd73317426abc33, type: 3}
+  Icon: {fileID: 21300064, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   IsConsumable: 1
   Value: 1
   IsStack: 1

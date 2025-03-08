@@ -44,6 +44,8 @@ public class PlayerUI : MonoBehaviour
         PlayerManager.Instance.Player.JumpCount += 1;
     }
 
+
+
     public void UiUpdate()
     {
         

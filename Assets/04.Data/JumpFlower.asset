@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 1
   ItemName: JumpFlower
-  ItemDescrip: Just Beautiful
+  ItemDescrip: JumpCount up
   Type: 0
   WhereTheConsum: 1
   Prefabs: {fileID: 1018568453208975839, guid: f63b166e84fd3c844b931bf845a5e6bd, type: 3}
