@@ -13,7 +13,8 @@ public enum WhereTheConsum
 {
     Health,
     Jump,
-    Speed
+    Speed,
+    Invincibility
 }
 
 
