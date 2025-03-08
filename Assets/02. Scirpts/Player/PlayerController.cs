@@ -43,11 +43,6 @@ public class PlayerController : MonoBehaviour
         CurSpeed = MoveSpeed;
 
     }
-    private void Update()
-    {
-        Debug.Log(MoveSpeed);
-    }
-
     private void FixedUpdate()
     {
         Move();
