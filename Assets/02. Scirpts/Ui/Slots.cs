@@ -10,9 +10,10 @@ public class Slots : MonoBehaviour
 
     [SerializeField] private Button UseEquipBtn;
     [SerializeField] private Button RemoveBtn;
+    [SerializeField] private Button UnEquipButton;
     [SerializeField] private TextMeshProUGUI SelectedItemName;
     [SerializeField] private TextMeshProUGUI SelectedItemDescri;
-    [SerializeField] private ItemInfo Default;
+   
     private void Start()
     {
         for (int i = 0; i < slots.Length; i++) 
@@ -112,16 +113,25 @@ public class Slots : MonoBehaviour
         SelectedItemName.text = PlayerManager.Instance.Player.slot.GetItemInfo().ItemName;
         SelectedItemDescri.text = PlayerManager.Instance.Player.slot.GetItemInfo().ItemDescrip;
         //각각 버튼에 함수 직접 달아주기
-        UseEquipBtn.gameObject.SetActive(true);
-        RemoveBtn.gameObject.SetActive(true);
-        if (slots[index].GetItemInfo().Type == ItemType.Consum)
-        { 
+
+        if (slots[index].GetItemInfo().IsEquip)
+        {
+            UnEquipButton.gameObject.SetActive(true);
+            UseEquipBtn.gameObject.SetActive(false);
+            UnEquipButton.onClick.RemoveAllListeners();
+            UnEquipButton.onClick.AddListener(()=> SlotItemUnEquip(PlayerManager.Instance.Player.slot));
+        }
+        else
+        {
+            UnEquipButton.gameObject.SetActive(false);
+            UseEquipBtn.gameObject.SetActive(true);
             UseEquipBtn.onClick.RemoveAllListeners();
             UseEquipBtn.onClick.AddListener(() => SlotItemuse(PlayerManager.Instance.Player.slot));
-
-            RemoveBtn.onClick.RemoveAllListeners();
-            RemoveBtn.onClick.AddListener(() => RemoveItem(PlayerManager.Instance.Player.slot));
         }
+ 
+        RemoveBtn.gameObject.SetActive(true);
+        RemoveBtn.onClick.RemoveAllListeners();
+        RemoveBtn.onClick.AddListener(() => RemoveItem(PlayerManager.Instance.Player.slot));
 
     }
 
@@ -130,6 +140,7 @@ public class Slots : MonoBehaviour
         SelectedItemName.text = string.Empty;
         SelectedItemDescri.text= string.Empty;
         UseEquipBtn.gameObject.SetActive(false);
+        UnEquipButton.gameObject.SetActive(false);
         RemoveBtn.gameObject.SetActive(false);
     }
 
@@ -149,17 +160,24 @@ public class Slots : MonoBehaviour
     private void RemoveItem(IndiSlot indi)
     {
         indi.itemCount--;
-        if(indi.itemCount == 0)
+        if(indi.itemCount <= 0)
         {
+            if(indi.GetItemInfo().IsEquip)
+            {
+                SlotItemUnEquip(indi);
+            }
             indi.Clear();
             ItemInfoTextAndButtonSetDown();
         }
       
     }
-
-    private void SlotItemThrow(IndiSlot indi)
+    private void SlotItemUnEquip(IndiSlot indi)
     {
-        RemoveItem(indi);
+        if(indi.GetItemInfo().WhereTheEquip == WhereTheEquip.Back)
+        {
+            Destroy(PlayerManager.Instance.Player.transform.GetChild(2).transform.GetChild(0).gameObject);
+            PlayerManager.Instance.Player.JunpCountDown();
+        }
     }
     private void SlotItemuse(IndiSlot indi)
     {
@@ -190,8 +208,15 @@ public class Slots : MonoBehaviour
                 RemoveItem(indi);
             }
         }
-
-        //장비는 나중에 추가할 예정
+        else if(indi.GetItemInfo().Type == ItemType.Equipment)
+        {
+            if(indi.GetItemInfo().WhereTheEquip == WhereTheEquip.Back)
+            {
+                Instantiate(indi.GetItemInfo().Prefabs, PlayerManager.Instance.Player.Back.transform);
+                indi.GetItemInfo().IsEquip = true;
+                PlayerManager.Instance.Player.JumpCountUP();
+            }
+        }
     }
 
 }
