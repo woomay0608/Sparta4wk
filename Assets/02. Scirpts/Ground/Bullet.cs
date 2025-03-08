@@ -20,6 +20,7 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
+            if(!PlayerManager.Instance.PlayerController.IsInvincibility)
             PlayerManager.Instance.Player.curhealth -= 1;
 
         }

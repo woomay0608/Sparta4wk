@@ -6229,7 +6229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &346022873
 Transform:
   m_ObjectHideFlags: 0
@@ -11709,6 +11709,7 @@ MonoBehaviour:
   MaxCamera: 0
   Inventory: {fileID: 1884276762}
   Slots: {fileID: 1393198994}
+  IsInvincibility: 0
 --- !u!65 &671977336
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11822,6 +11823,7 @@ MonoBehaviour:
   curJumpCount: 0
   Curiteminfo: {fileID: 0}
   slot: {fileID: 0}
+  Invincibility: {fileID: 346022875}
 --- !u!114 &671977341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24085,6 +24087,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 452594037}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3356414532813065398 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4885231199823583104, guid: 4424583079d1e724d91cfaaffd7a23dc, type: 3}
+  m_PrefabInstance: {fileID: 5995565711986319516}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3356414532816457911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3356414532813065398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 501813c9ef846924a80e2a7f82086726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  info: {fileID: 11400000, guid: 6fbf5fb03f3c4544cb77efe97383d65b, type: 2}
+--- !u!64 &3356414532816457912
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3356414532813065398}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 819ac2c6fef18c54f850315b810c8cc7, type: 3}
 --- !u!23 &4449802141129653753
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24236,6 +24278,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BearGryllsTent
       objectReference: {fileID: 0}
+    - target: {fileID: 4885231199823583104, guid: 4424583079d1e724d91cfaaffd7a23dc, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5825882362193693603, guid: 4424583079d1e724d91cfaaffd7a23dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.271
@@ -24279,7 +24325,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4885231199823583104, guid: 4424583079d1e724d91cfaaffd7a23dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3356414532816457911}
+    - targetCorrespondingSourceObject: {fileID: 4885231199823583104, guid: 4424583079d1e724d91cfaaffd7a23dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3356414532816457912}
   m_SourcePrefab: {fileID: 100100000, guid: 4424583079d1e724d91cfaaffd7a23dc, type: 3}
 --- !u!4 &6940161407164612940 stripped
 Transform:

@@ -35,7 +35,11 @@ public class PlayerController : MonoBehaviour
     [Header("Capture")]
     public Slots Slots;
 
-    
+    [Header("Invincibility")]
+    public bool IsInvincibility;
+
+
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -136,7 +140,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Speedup()
     {
         MoveSpeed = CurSpeed + 3f;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(10f);
         Debug.Log("hii");
         MoveSpeed = CurSpeed;
     }
@@ -145,6 +149,23 @@ public class PlayerController : MonoBehaviour
     {
         StartCoroutine(Speedup());
     }
+
+
+    private IEnumerator Invincibility()
+    {
+        IsInvincibility = true;
+        PlayerManager.Instance.Player.Invincibility.gameObject.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        IsInvincibility = false;
+        PlayerManager.Instance.Player.Invincibility.gameObject.SetActive(false);
+
+    }
+
+    public void StartInvincibility()
+    {
+        StartCoroutine(Invincibility());
+    }
+
 
 
 

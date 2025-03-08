@@ -184,6 +184,11 @@ public class Slots : MonoBehaviour
                 PlayerManager.Instance.PlayerController.StartSpeedup();
                 RemoveItem(indi);
             }
+            else if(indi.GetItemInfo().WhereTheConsum == WhereTheConsum.Invincibility)
+            {
+                PlayerManager.Instance.PlayerController.StartInvincibility();
+                RemoveItem(indi);
+            }
         }
 
         //장비는 나중에 추가할 예정

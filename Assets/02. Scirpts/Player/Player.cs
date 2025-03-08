@@ -13,11 +13,14 @@ public class Player : MonoBehaviour
     public ItemInfo Curiteminfo;
     public IndiSlot slot;
 
+    public ParticleSystem Invincibility;
+
     private void Start()
     {
         curhealth = PlayerHealth;
         curJumpCount = JumpCount;
     }
+
 
     public void SetJumpCount()
     {
