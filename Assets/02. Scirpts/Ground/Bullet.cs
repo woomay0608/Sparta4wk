@@ -9,6 +9,11 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        
+    }
+    private void OnEnable()
+    {
+        StartCoroutine(Destroy());
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -16,6 +21,14 @@ public class Bullet : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             PlayerManager.Instance.Player.curhealth -= 1;
+
         }
+    }
+
+
+    private IEnumerator Destroy()
+    {
+        yield return new WaitForSeconds(5f);
+        Destroy(gameObject);
     }
 }
