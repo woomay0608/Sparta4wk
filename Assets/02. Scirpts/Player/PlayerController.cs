@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
 
     [Header("Jump")]
     public float JumpPower;
-    int Jumpc;
     public LayerMask Layer;
 
     
@@ -135,6 +134,17 @@ public class PlayerController : MonoBehaviour
             Inventory.gameObject.SetActive(true);
         }
 
+    }
+
+    private IEnumerator JumpCountUp()
+    {
+        PlayerManager.Instance.Player.JumpCountUP();
+        yield return new WaitForSeconds(3f);
+        PlayerManager.Instance.Player.JunpCountDown();
+    }
+    public void StartJumpCountUp()
+    {
+        StartCoroutine(JumpCountUp());
     }
 
     private IEnumerator Speedup()

@@ -8,8 +8,9 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] GameObject Heart;
     [SerializeField] GameObject HeartPrefabs;
     
-    [SerializeField] GameObject Jump;
-    [SerializeField] GameObject JumpPrefabs;
+    public GameObject Jump;
+    public GameObject JumpPrefabs;
+
 
 
     private void Start()
@@ -17,12 +18,12 @@ public class PlayerUI : MonoBehaviour
         Set();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         UiUpdate();
     }
 
-    private void Set()
+    public void Set()
     {
         for (int i = 0; PlayerManager.Instance.Player.PlayerHealth > i; i++) 
         {
@@ -33,43 +34,37 @@ public class PlayerUI : MonoBehaviour
             Instantiate(JumpPrefabs, Jump.transform);
         }
     }
-
-    public void PlusJumpCount()
-    {
-        if(PlayerManager.Instance.Player.JumpCount >= 3)
-        {
-            return;
-        }
-        Instantiate(JumpPrefabs, Jump.transform);
-        PlayerManager.Instance.Player.JumpCount += 1;
-    }
-
-
-
     public void UiUpdate()
     {
         
-        int UnActiveheartChild = Heart.transform.childCount - PlayerManager.Instance.Player.curhealth;
-        int UnActivejumpChild = Jump.transform.childCount - PlayerManager.Instance.Player.curJumpCount;
-
+        
         
 
-        for (int i = 0;  i < UnActiveheartChild; i++)
+        int MaxJumpCount  = Jump.transform.childCount;
+        int curJumpCount = Mathf.Min(PlayerManager.Instance.Player.curJumpCount, MaxJumpCount);
+
+        int MaxHeart = Heart.transform.childCount;
+        int curHealthCount = Mathf.Min(PlayerManager.Instance.Player.curhealth, MaxHeart);
+
+        for(int i = 0; i < MaxJumpCount; i++)
         {
-            Heart.transform.GetChild(Heart.transform.childCount - i-1).GetComponent<Image>().color = new Color(0f,0f,0f); 
+            Image jumpImage = Jump.transform.GetChild(i).GetComponent<Image>();
+            if (i < curJumpCount)
+                jumpImage.color = new Color(1f, 1f, 1f);
+            else
+                jumpImage.color = new Color(0f, 0f, 0f); 
         }
-        for (int i = 0; i < UnActivejumpChild; i++)
+        for (int i = 0; i < MaxHeart; i++)
         {
-            Jump.transform.GetChild(Jump.transform.childCount - i -1).GetComponent<Image>().color = new Color(0f, 0f, 0f);
+            Image HeartImage = Heart.transform.GetChild(i).GetComponent<Image>();
+            if (i < curHealthCount)
+                HeartImage.color = new Color(1f, 1f, 1f);
+            else
+                HeartImage.color = new Color(0f, 0f, 0f);
         }
-        for (int i = 0; i < PlayerManager.Instance.Player.curhealth; i++)
-        {
-            Heart.transform.GetChild(i).GetComponent<Image>().color = new Color(1f, 1f, 1f);
-        }
-        for (int i = 0; i < PlayerManager.Instance.Player.curJumpCount; i++)
-        {
-            Jump.transform.GetChild(i).GetComponent<Image>().color = new Color(1f, 1f, 1f);
-        }
+
+
+
 
 
     }

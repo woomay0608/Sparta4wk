@@ -32,6 +32,27 @@ public class Player : MonoBehaviour
         
     }
 
+    public void JumpCountUP()
+    {
+        if (JumpCount < 3)
+        {
+            curJumpCount += 1;
+            JumpCount += 1;
+            Instantiate(PlayerManager.Instance.PlayerUI.JumpPrefabs, PlayerManager.Instance.PlayerUI.Jump.transform);
+
+        }    
+    }
+    public void JunpCountDown()
+    {
+        if (JumpCount > 1)
+        {
+            curJumpCount -= 1;
+            JumpCount -= 1;
+            Destroy(PlayerManager.Instance.PlayerUI.Jump.transform.GetChild(PlayerManager.Instance.PlayerUI.Jump.transform.childCount-1).gameObject);
+            
+        }
+    }
+
 
 
 }
