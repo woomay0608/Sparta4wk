@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3724411498425863627}
   - component: {fileID: 9088007293267255538}
   - component: {fileID: 7180489177004316269}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CloudBread
   m_TagString: Untagged
   m_Icon: {fileID: 0}

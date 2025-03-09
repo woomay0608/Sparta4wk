@@ -61,7 +61,6 @@ public class PlayerRay : MonoBehaviour
         if(Physics.Raycast(ray, out hit, 0.5f, WallLayer))
         {
             angle = Vector3.Angle(hit.normal, Vector3.up);
-            Debug.Log(angle);
             if(angle > 80&& angle < 100)
             {
                 PlayerManager.Instance.PlayerController.rigidbody.velocity = Vector3.zero;

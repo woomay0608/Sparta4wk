@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5825882362193693603}
   - component: {fileID: 2309619883616974682}
   - component: {fileID: 353239871401537318}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BearGryllsTent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
