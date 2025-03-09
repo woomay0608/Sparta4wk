@@ -5,9 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    Rigidbody rigidbody;
+    public Rigidbody rigidbody;
     Animator animator;
     public GameObject PlayerBody;
+
 
 
     Vector3 MoveDir;
@@ -36,6 +37,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Invincibility")]
     public bool IsInvincibility;
+    [Header("Wall")]
+    public float WallSpeed;
+    public bool IsWall = false;
 
 
 
@@ -61,12 +65,24 @@ public class PlayerController : MonoBehaviour
     }
     private void Move()
     {
-        Vector3 n = MoveDir.x * transform.right + transform.forward * MoveDir.y;
-        n *= MoveSpeed;
-        n.y = rigidbody.velocity.y;
-        rigidbody.velocity = n;
+        if (!IsWall)
+        {
+            rigidbody.useGravity = true;
+            Vector3 n = MoveDir.x * transform.right + transform.forward * MoveDir.y;
+            n *= MoveSpeed;
+            n.y = rigidbody.velocity.y;
+            rigidbody.velocity = n;
+            animator.SetBool("IsMoving", MoveDir.magnitude > 0);
+        }
+        else
+        {
+            rigidbody.useGravity = false;
+            Vector3 n = MoveDir.y * transform.up + transform.right *MoveDir.x ;
+            n *= WallSpeed;
+            rigidbody.velocity = n;
+        }
         
-        animator.SetBool("IsMoving", MoveDir.magnitude > 0);
+        
     }
 
     public void OnJump()
