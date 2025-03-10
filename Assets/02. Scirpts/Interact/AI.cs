@@ -21,8 +21,9 @@ public class AI : ItemObject
         meshSurface = GetComponentInParent<NavMeshSurface>();
         agent = GetComponentInChildren<NavMeshAgent>();
         camera = Camera.main;
-
     }
+  
+
     public override void OnInteract()
     {
         PlayerManager.Instance.PlayerController.gameObject.SetActive(false);
@@ -52,5 +53,8 @@ public class AI : ItemObject
     {
         meshSurface.BuildNavMesh();
     }
+
+
+ 
 
 }

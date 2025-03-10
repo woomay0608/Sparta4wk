@@ -15,13 +15,18 @@ public class Ground : MonoBehaviour
             PlayerManager.Instance.IsPlayerGround = true;
             PlayerManager.Instance.Player.SetJumpCount();
             collision.transform.parent = transform;
-            if(IsBake)
-            {
-                aI.SurfaceBake();
-            }
+        
         
         }
 
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (IsBake)
+        {
+            aI.SurfaceBake();
+        }
     }
 
 
