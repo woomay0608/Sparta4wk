@@ -31,4 +31,19 @@ public class PlayerManager : MonoBehaviour
         playerUI = FindAnyObjectByType<PlayerUI>();
         playerController = FindAnyObjectByType<PlayerController>();
     }
+
+    private void Update()
+    {
+        if(Player.transform.position.y < -20)
+        {
+            GameOver();
+        }
+    }
+
+    public void GameOver()
+    {
+        Player.curhealth = 3;
+        Player.transform.position = new Vector3(0f,0f, 0f);
+
+    }
 }
