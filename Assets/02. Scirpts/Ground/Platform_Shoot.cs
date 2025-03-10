@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Platform_Shoot : MonoBehaviour
@@ -22,11 +21,11 @@ public class Platform_Shoot : MonoBehaviour
         if(collision.transform.CompareTag("Player"))
         {
             Rigidbody rb = collision.transform.GetComponent<Rigidbody>();
-            StartCoroutine(Silhum(rb));
+            StartCoroutine(PlatformShooting(rb));
         }
     }
 
-    private IEnumerator Silhum(Rigidbody rigidbody)
+    private IEnumerator PlatformShooting(Rigidbody rigidbody)
     {
 
         yield return new WaitForSeconds(WatingTime);

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum MovingType
@@ -11,21 +9,21 @@ public enum MovingType
 
 public class Platform : MonoBehaviour
 {
-    [Range(0f, 10f)] public float speed;
+    [Range(0f, 10f)] public float Speed;
     [Range(0, 100)] public int MaxDistance;
     [Range(0, 100)] public int MinDistance;
     public MovingType type;
     Transform curTransform;
-    Vector3 StartPosition;
+    Vector3 startPosition;
 
-    bool IsFront = true;
+    bool isForont = true;
 
 
     private void Start()
     {
 
         curTransform = transform;
-        StartPosition = transform.position;
+        startPosition = transform.position;
     }
 
     private void FixedUpdate()
@@ -40,25 +38,25 @@ public class Platform : MonoBehaviour
         {
             case MovingType.X:
 
-                if (IsFront)
+                if (isForont)
                 {
-                    curTransform.position = new Vector3(curTransform.position.x + speed * Time.deltaTime, curTransform.position.y, curTransform.position.z);
+                    curTransform.position = new Vector3(curTransform.position.x + Speed * Time.deltaTime, curTransform.position.y, curTransform.position.z);
 
-                    if (curTransform.position.x > StartPosition.x + MaxDistance)
+                    if (curTransform.position.x > startPosition.x + MaxDistance)
                     {
-                        curTransform.position = new Vector3(StartPosition.x + MaxDistance, curTransform.position.y, curTransform.position.z);
-                        IsFront = false;
+                        curTransform.position = new Vector3(startPosition.x + MaxDistance, curTransform.position.y, curTransform.position.z);
+                        isForont = false;
 
                     }
                 }
                 else
                 {
-                    curTransform.position = new Vector3(curTransform.position.x - speed * Time.deltaTime, curTransform.position.y, curTransform.position.z);
+                    curTransform.position = new Vector3(curTransform.position.x - Speed * Time.deltaTime, curTransform.position.y, curTransform.position.z);
 
-                    if (curTransform.position.x < StartPosition.x - MinDistance)
+                    if (curTransform.position.x < startPosition.x - MinDistance)
                     {
-                        curTransform.position = new Vector3(StartPosition.x - MinDistance, curTransform.position.y, curTransform.position.z);
-                        IsFront = true;
+                        curTransform.position = new Vector3(startPosition.x - MinDistance, curTransform.position.y, curTransform.position.z);
+                        isForont = true;
 
                     }
                 }
@@ -66,49 +64,49 @@ public class Platform : MonoBehaviour
 
                 break;
             case MovingType.Z:
-                if (IsFront)
+                if (isForont)
                 {
-                    curTransform.position = new Vector3(curTransform.position.x , curTransform.position.y, curTransform.position.z + speed * Time.deltaTime);
+                    curTransform.position = new Vector3(curTransform.position.x , curTransform.position.y, curTransform.position.z + Speed * Time.deltaTime);
 
-                    if (curTransform.position.z > StartPosition.z + MaxDistance)
+                    if (curTransform.position.z > startPosition.z + MaxDistance)
                     {
-                        curTransform.position = new Vector3(curTransform.position.x , curTransform.position.y, StartPosition.z + MaxDistance);
-                        IsFront = false;
+                        curTransform.position = new Vector3(curTransform.position.x , curTransform.position.y, startPosition.z + MaxDistance);
+                        isForont = false;
 
                     }
                 }
                 else
                 {
-                    curTransform.position = new Vector3(curTransform.position.x , curTransform.position.y, curTransform.position.z - speed * Time.deltaTime );
+                    curTransform.position = new Vector3(curTransform.position.x , curTransform.position.y, curTransform.position.z - Speed * Time.deltaTime );
 
-                    if (curTransform.position.z < StartPosition.z - MinDistance)
+                    if (curTransform.position.z < startPosition.z - MinDistance)
                     {
-                        curTransform.position = new Vector3(curTransform.position.x, curTransform.position.y, StartPosition.z- MinDistance);
-                        IsFront = true;
+                        curTransform.position = new Vector3(curTransform.position.x, curTransform.position.y, startPosition.z- MinDistance);
+                        isForont = true;
 
                     }
                 }
                 break;
             case MovingType.Y:
-                if (IsFront)
+                if (isForont)
                 {
-                    curTransform.position = new Vector3(curTransform.position.x , curTransform.position.y + speed * Time.deltaTime, curTransform.position.z);
+                    curTransform.position = new Vector3(curTransform.position.x , curTransform.position.y + Speed * Time.deltaTime, curTransform.position.z);
 
-                    if (curTransform.position.y > StartPosition.y + MaxDistance)
+                    if (curTransform.position.y > startPosition.y + MaxDistance)
                     {
-                        curTransform.position = new Vector3(curTransform.position.x , StartPosition.y + MaxDistance, curTransform.position.z);
-                        IsFront = false;
+                        curTransform.position = new Vector3(curTransform.position.x , startPosition.y + MaxDistance, curTransform.position.z);
+                        isForont = false;
 
                     }
                 }
                 else
                 {
-                    curTransform.position = new Vector3(curTransform.position.x , curTransform.position.y - speed * Time.deltaTime, curTransform.position.z);
+                    curTransform.position = new Vector3(curTransform.position.x , curTransform.position.y - Speed * Time.deltaTime, curTransform.position.z);
 
-                    if (curTransform.position.y < StartPosition.y - MinDistance)
+                    if (curTransform.position.y < startPosition.y - MinDistance)
                     {
-                        curTransform.position = new Vector3(curTransform.position.x, StartPosition.y - MinDistance, curTransform.position.z);
-                        IsFront = true;
+                        curTransform.position = new Vector3(curTransform.position.x, startPosition.y - MinDistance, curTransform.position.z);
+                        isForont = true;
 
                     }
                 }

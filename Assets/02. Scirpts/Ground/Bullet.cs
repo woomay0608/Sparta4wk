@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -22,8 +21,8 @@ public class Bullet : MonoBehaviour
         {
             if (!PlayerManager.Instance.PlayerController.IsInvincibility)
             {
-                PlayerManager.Instance.Player.curhealth -= 1;
-                if(PlayerManager.Instance.Player.curhealth <= 0)
+                PlayerManager.Instance.Player.Curhealth -= 1;
+                if(PlayerManager.Instance.Player.Curhealth <= 0)
                 {
                     PlayerManager.Instance.GameOver();
                 }

@@ -1,20 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerRay : MonoBehaviour
 {
 
-    public LayerMask layerMask;
+    public LayerMask LayerMask;
     public LayerMask WallLayer;
-    public float angle;
+    public float Angle;
     ItemObject itemObject;
     [SerializeField] private TextMeshProUGUI Name;
     [SerializeField] private TextMeshProUGUI Description;
-    [SerializeField] private GameObject Text;
-    GameObject text;
+    [SerializeField] private GameObject TxtPrefab;
+    GameObject txtObject;
     bool IsTextOk = true;
     bool IsDestroyOk = false;
 
@@ -41,7 +39,7 @@ public class PlayerRay : MonoBehaviour
 
     private void ShowItemNameAndDescriptionToRay(out RaycastHit hit, Ray ray)
     {
-        if (Physics.Raycast(ray, out hit, 1f ,layerMask))
+        if (Physics.Raycast(ray, out hit, 1f ,LayerMask))
         {
             if (hit.transform.TryGetComponent(out itemObject))
             {
@@ -60,8 +58,8 @@ public class PlayerRay : MonoBehaviour
         }
         else
         {
-            if(text != null)
-                Destroy(text);
+            if(txtObject != null)
+                Destroy(txtObject);
             IsTextOk = true;
             IsDestroyOk = true;
             Name.text = string.Empty;
@@ -76,10 +74,10 @@ public class PlayerRay : MonoBehaviour
     {
         if(Physics.Raycast(ray, out hit, 0.5f, WallLayer))
         {
-            angle = Vector3.Angle(hit.normal, Vector3.up);
-            if(angle > 80&& angle < 100)
+            Angle = Vector3.Angle(hit.normal, Vector3.up);
+            if(Angle > 80&& Angle < 100)
             {
-                PlayerManager.Instance.PlayerController.rigidbody.velocity = Vector3.zero;
+                PlayerManager.Instance.PlayerController.Rigidbody.velocity = Vector3.zero;
                 PlayerManager.Instance.PlayerController.IsWall = true;
                 BoxCollider Collider = hit.transform.GetComponent<BoxCollider>();
                 float Height = Collider.bounds.size.y;
@@ -101,8 +99,8 @@ public class PlayerRay : MonoBehaviour
     {
         if (IsTextOk)
         {
-            text = Instantiate(Text, itemObject.transform);
-            text.GetComponent<InteractiveText>().SetText(itemObject.GetText());
+            txtObject = Instantiate(TxtPrefab, itemObject.transform);
+            txtObject.GetComponent<InteractiveText>().SetCommandText(itemObject.GetText());
         }
         yield return new WaitUntil(() =>IsDestroyOk );
         

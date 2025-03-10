@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -41,10 +39,10 @@ public class PlayerUI : MonoBehaviour
         
 
         int MaxJumpCount  = Jump.transform.childCount;
-        int curJumpCount = Mathf.Min(PlayerManager.Instance.Player.curJumpCount, MaxJumpCount);
+        int curJumpCount = Mathf.Min(PlayerManager.Instance.Player.CurJumpCount, MaxJumpCount);
 
         int MaxHeart = Heart.transform.childCount;
-        int curHealthCount = Mathf.Min(PlayerManager.Instance.Player.curhealth, MaxHeart);
+        int curHealthCount = Mathf.Min(PlayerManager.Instance.Player.Curhealth, MaxHeart);
 
         for(int i = 0; i < MaxJumpCount; i++)
         {

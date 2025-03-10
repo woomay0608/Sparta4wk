@@ -1,16 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BenchCanon : MonoBehaviour
 {
     public LayerMask layer;
-    public GameObject Bullet;
-    private GameObject Bullets;
+    public GameObject BulletPrefab;
+    private GameObject bullet;
     [Range(0f, 100f)] public float CanonShootCoolTime;
     [Range(0f, 100f)] public float CanonShootPower;
 
-    private bool IsOkToShoot = false;
+    private bool isOkToShoot = false;
 
 
     private void Update()
@@ -22,28 +21,22 @@ public class BenchCanon : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(ray,10f,layer))
         {
-
             StartCoroutine(CanonShoot());
-            //Bullet.GetComponent<Rigidbody>().AddForce(transform.forward,ForceMode.Impulse);
-          
         }
     }
 
 
     public IEnumerator CanonShoot()
     {
-        if(!IsOkToShoot)
+        if(!isOkToShoot)
         {
-            IsOkToShoot=true;
-            Bullets = Instantiate(Bullet,transform);
-            Bullets.transform.localRotation = Quaternion.identity;
-            Bullets.GetComponent<Rigidbody>().AddForce(transform.forward* CanonShootPower, ForceMode.Impulse);
+            isOkToShoot=true;
+            bullet = Instantiate(BulletPrefab,transform);
+            bullet.transform.localRotation = Quaternion.identity;
+            bullet.GetComponent<Rigidbody>().AddForce(transform.forward* CanonShootPower, ForceMode.Impulse);
 
-            //틀린코드
-            //Instantiate(Bullet,transform);
-            //Bullet.GetComponent<Rigidbody>().AddForce(transform.forward* CanonShootPower, ForceMode.Impulse);
             yield return new WaitForSeconds(CanonShootCoolTime);
-            IsOkToShoot = false;
+            isOkToShoot = false;
 
         }
     }

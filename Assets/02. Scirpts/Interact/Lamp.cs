@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Lamp : ItemObject
 {
-    Light Light;
+    Light light;
 
     private void Start()
     {
-         Light = GetComponentInChildren<Light>();
+         light = GetComponentInChildren<Light>();
     }
     public override void OnInteract()
     {
-        Light.enabled = !Light.enabled;
+        light.enabled = !light.enabled;
     }
 }

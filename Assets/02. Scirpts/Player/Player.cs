@@ -1,36 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    [Header("PlayerInfo")]
     public int PlayerHealth;
-    public int curhealth;
+    public int Curhealth;
     public int JumpCount;
-    public int curJumpCount;
-
+    public int CurJumpCount;
+    [Header("PlayerItemInfo")]
     public ItemInfo Curiteminfo;
-    public IndiSlot slot;
-
+    public IndiSlot Slot;
+    [Header("Other")]
     public ParticleSystem Invincibility;
-
     public GameObject Back;
 
     private void Start()
     {
-        curhealth = PlayerHealth;
-        curJumpCount = JumpCount;
+        Curhealth = PlayerHealth;
+        CurJumpCount = JumpCount;
     }
 
 
     public void SetJumpCount()
     {
-        curJumpCount = JumpCount;
+        CurJumpCount = JumpCount;
     }
     public void SetIndiSlot(IndiSlot indi)
     {
-        slot = indi;
+        Slot = indi;
         
     }
 
@@ -38,7 +35,7 @@ public class Player : MonoBehaviour
     {
         if (JumpCount < 3)
         {
-            curJumpCount += 1;
+            CurJumpCount += 1;
             JumpCount += 1;
             Instantiate(PlayerManager.Instance.PlayerUI.JumpPrefabs, PlayerManager.Instance.PlayerUI.Jump.transform);
 
@@ -48,7 +45,7 @@ public class Player : MonoBehaviour
     {
         if (JumpCount > 1)
         {
-            curJumpCount -= 1;
+            CurJumpCount -= 1;
             JumpCount -= 1;
             Destroy(PlayerManager.Instance.PlayerUI.Jump.transform.GetChild(PlayerManager.Instance.PlayerUI.Jump.transform.childCount-1).gameObject);
             

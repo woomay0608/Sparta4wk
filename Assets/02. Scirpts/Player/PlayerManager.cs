@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -9,8 +7,8 @@ public class PlayerManager : MonoBehaviour
 
 
 
-    private Player _player;
-    public Player Player { get { return _player; }    }
+    private Player player;
+    public Player Player { get { return player; }    }
 
     private PlayerUI playerUI;
     public PlayerUI PlayerUI { get { return playerUI; }  }
@@ -27,7 +25,7 @@ public class PlayerManager : MonoBehaviour
             Instance = this;
         }
 
-        _player = FindAnyObjectByType<Player>();
+        player = FindAnyObjectByType<Player>();
         playerUI = FindAnyObjectByType<PlayerUI>();
         playerController = FindAnyObjectByType<PlayerController>();
     }
@@ -42,7 +40,7 @@ public class PlayerManager : MonoBehaviour
 
     public void GameOver()
     {
-        Player.curhealth = 3;
+        Player.Curhealth = 3;
         Player.transform.position = new Vector3(0f,0f, 0f);
 
     }

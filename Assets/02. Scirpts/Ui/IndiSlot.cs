@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,15 +6,15 @@ public class IndiSlot : MonoBehaviour
 {
 
     [Header("ItemInfo")]
-    public int index;
-    public Image icon;
+    public int Index;
+    public Image Icon;
     public bool SomeItemComein = false;
-    public int itemCount = 0;
-    public TextMeshProUGUI Count;
+    public int ItemCount = 0;
+    public TextMeshProUGUI TxtCount;
 
     private Outline outline;
     ItemInfo itemInfo;
-    private Button SelectItem;
+    private Button selectItem;
     private Slots slots;
     public bool Selected;
     
@@ -25,10 +23,9 @@ public class IndiSlot : MonoBehaviour
     private void Start()
     {
         outline = GetComponent<Outline>();
-        SelectItem = GetComponent<Button>();
+        selectItem = GetComponent<Button>();
         slots = GetComponentInParent<Slots>(true);
-
-        SelectItem.onClick.AddListener(OnClickMe);
+        selectItem.onClick.AddListener(OnClickMe);
     }
 
     public void OnOutline()
@@ -44,28 +41,28 @@ public class IndiSlot : MonoBehaviour
         return itemInfo;
     }
 
-    public void Set()
+    public void SetSlot()
     {
         if(itemInfo != null) 
         {
-            icon.gameObject.SetActive(true);
-            icon.sprite = itemInfo.Icon;
-            Count.text = itemCount > 0 ? itemCount.ToString() : string.Empty;
+            Icon.gameObject.SetActive(true);
+            Icon.sprite = itemInfo.Icon;
+            TxtCount.text = ItemCount > 0 ? ItemCount.ToString() : string.Empty;
         }
     }
 
-    public void Clear()
+    public void ClearSlot()
     {
         SetIteminfo(null);
         SomeItemComein = false;
-        Count.text = string.Empty;
-        icon.gameObject.SetActive(false);
+        TxtCount.text = string.Empty;
+        Icon.gameObject.SetActive(false);
 
     }
 
     public void OnClickMe()
     {
-        slots.SelectItem(index);
+        slots.SelectItem(Index);
     }
 
 

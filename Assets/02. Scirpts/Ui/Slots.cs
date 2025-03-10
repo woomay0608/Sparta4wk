@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Slots : MonoBehaviour
 {
-    public IndiSlot[] slots;
+    public IndiSlot[] SlotArray;
 
     [SerializeField] private Button UseEquipBtn;
     [SerializeField] private Button RemoveBtn;
@@ -16,30 +14,30 @@ public class Slots : MonoBehaviour
    
     private void Start()
     {
-        for (int i = 0; i < slots.Length; i++) 
+        for (int i = 0; i < SlotArray.Length; i++) 
         {
-            slots[i].index = i;
-            slots[i].Count.text = string.Empty;
+            SlotArray[i].Index = i;
+            SlotArray[i].TxtCount.text = string.Empty;
         }
         ItemInfoTextAndButtonSetDown();
     }
     private void Update()
     {
-        for(int i = 0;i < slots.Length;i++)
+        for(int i = 0;i < SlotArray.Length;i++)
         {
-            if (slots[i].GetItemInfo() != null)
-                slots[i].Set();
+            if (SlotArray[i].GetItemInfo() != null)
+                SlotArray[i].SetSlot();
             else 
-                slots[i].Clear();
+                SlotArray[i].ClearSlot();
 
             if(i >=1)
             {
-                if (slots[i-1].GetItemInfo() == null)
+                if (SlotArray[i-1].GetItemInfo() == null)
                 {
-                    slots[i - 1].SetIteminfo(slots[i].GetItemInfo());
-                    slots[i - 1].itemCount = slots[i].itemCount;
-                    slots[i-1].Set();
-                    slots[i].Clear();
+                    SlotArray[i - 1].SetIteminfo(SlotArray[i].GetItemInfo());
+                    SlotArray[i - 1].ItemCount = SlotArray[i].ItemCount;
+                    SlotArray[i-1].SetSlot();
+                    SlotArray[i].ClearSlot();
                 }
             }
 
@@ -50,13 +48,13 @@ public class Slots : MonoBehaviour
 
     public void CapturedItemToInvetory(ItemInfo itemInfo)
     {
-        for (int i = 0;i < slots.Length;i++) 
+        for (int i = 0;i < SlotArray.Length;i++) 
         {
-            if (slots[i].SomeItemComein)
+            if (SlotArray[i].SomeItemComein)
             {
-                if (itemInfo.IsStack&& slots[i].GetItemInfo().Id == itemInfo.Id)
+                if (itemInfo.IsStack&& SlotArray[i].GetItemInfo().Id == itemInfo.Id)
                 {
-                    slots[i].itemCount += 1;
+                    SlotArray[i].ItemCount += 1;
                     break;
                 }
                 else if(IsSameItemInBackPack(itemInfo))
@@ -67,14 +65,14 @@ public class Slots : MonoBehaviour
             }
             else
             {
-                slots[i].SetIteminfo(itemInfo);
-                slots[i].icon.sprite =itemInfo.Icon;
-                if(slots[i].GetItemInfo().IsStack)
+                SlotArray[i].SetIteminfo(itemInfo);
+                SlotArray[i].Icon.sprite =itemInfo.Icon;
+                if(SlotArray[i].GetItemInfo().IsStack)
                 {
-                    slots[i].itemCount++;
-                    slots[i].Count.text = slots[i].itemCount.ToString();
+                    SlotArray[i].ItemCount++;
+                    SlotArray[i].TxtCount.text = SlotArray[i].ItemCount.ToString();
                 }
-                slots[i].SomeItemComein = true;
+                SlotArray[i].SomeItemComein = true;
                 break;
             }
           
@@ -85,9 +83,9 @@ public class Slots : MonoBehaviour
 
     private bool IsSameItemInBackPack(ItemInfo itemInfo)
     {
-        for(int i = 0 ;i < slots.Length;i++)
+        for(int i = 0 ;i < SlotArray.Length;i++)
         {
-            if (slots[i].GetItemInfo().Id == itemInfo.Id)
+            if (SlotArray[i].GetItemInfo().Id == itemInfo.Id)
             {
                 return true;
             }
@@ -102,36 +100,36 @@ public class Slots : MonoBehaviour
 
     public void SelectItem(int index)
     {
-        if (slots[index].GetItemInfo() == null)
+        if (SlotArray[index].GetItemInfo() == null)
         {
             ItemInfoTextAndButtonSetDown();
             return;
         }
 
-        PlayerManager.Instance.Player.SetIndiSlot(slots[index]);
+        PlayerManager.Instance.Player.SetIndiSlot(SlotArray[index]);
         Selected(index);
-        SelectedItemName.text = PlayerManager.Instance.Player.slot.GetItemInfo().ItemName;
-        SelectedItemDescri.text = PlayerManager.Instance.Player.slot.GetItemInfo().ItemDescrip;
+        SelectedItemName.text = PlayerManager.Instance.Player.Slot.GetItemInfo().ItemName;
+        SelectedItemDescri.text = PlayerManager.Instance.Player.Slot.GetItemInfo().ItemDescrip;
         //각각 버튼에 함수 직접 달아주기
 
-        if (slots[index].GetItemInfo().IsEquip)
+        if (SlotArray[index].GetItemInfo().IsEquip)
         {
             UnEquipButton.gameObject.SetActive(true);
             UseEquipBtn.gameObject.SetActive(false);
             UnEquipButton.onClick.RemoveAllListeners();
-            UnEquipButton.onClick.AddListener(()=> SlotItemUnEquip(PlayerManager.Instance.Player.slot));
+            UnEquipButton.onClick.AddListener(()=> SlotItemUnEquip(PlayerManager.Instance.Player.Slot));
         }
         else
         {
             UnEquipButton.gameObject.SetActive(false);
             UseEquipBtn.gameObject.SetActive(true);
             UseEquipBtn.onClick.RemoveAllListeners();
-            UseEquipBtn.onClick.AddListener(() => SlotItemuse(PlayerManager.Instance.Player.slot));
+            UseEquipBtn.onClick.AddListener(() => SlotItemuse(PlayerManager.Instance.Player.Slot));
         }
  
         RemoveBtn.gameObject.SetActive(true);
         RemoveBtn.onClick.RemoveAllListeners();
-        RemoveBtn.onClick.AddListener(() => RemoveItem(PlayerManager.Instance.Player.slot));
+        RemoveBtn.onClick.AddListener(() => RemoveItem(PlayerManager.Instance.Player.Slot));
 
     }
 
@@ -146,27 +144,27 @@ public class Slots : MonoBehaviour
 
     public void Selected(int index)
     {
-        for(int i = 0; i < slots.Length; i++) 
+        for(int i = 0; i < SlotArray.Length; i++) 
         {
-            slots[i].Selected = false;
-            slots[i].OnOutline();
+            SlotArray[i].Selected = false;
+            SlotArray[i].OnOutline();
         }
-        slots[index].Selected = true;
-        slots[index].OnOutline();
+        SlotArray[index].Selected = true;
+        SlotArray[index].OnOutline();
     }
 
 
 
     private void RemoveItem(IndiSlot indi)
     {
-        indi.itemCount--;
-        if(indi.itemCount <= 0)
+        indi.ItemCount--;
+        if(indi.ItemCount <= 0)
         {
             if(indi.GetItemInfo().IsEquip)
             {
                 SlotItemUnEquip(indi);
             }
-            indi.Clear();
+            indi.ClearSlot();
             ItemInfoTextAndButtonSetDown();
         }
       
@@ -185,11 +183,11 @@ public class Slots : MonoBehaviour
         {
             if(indi.GetItemInfo().WhereTheConsum == WhereTheConsum.Health)
             {
-                PlayerManager.Instance.Player.curhealth += 1;
+                PlayerManager.Instance.Player.Curhealth += 1;
                 RemoveItem(indi);
-                if (PlayerManager.Instance.Player.curhealth > PlayerManager.Instance.Player.PlayerHealth)
+                if (PlayerManager.Instance.Player.Curhealth > PlayerManager.Instance.Player.PlayerHealth)
                 {
-                    PlayerManager.Instance.Player.curhealth = PlayerManager.Instance.Player.PlayerHealth;
+                    PlayerManager.Instance.Player.Curhealth = PlayerManager.Instance.Player.PlayerHealth;
                 }
             }
             else if (indi.GetItemInfo().WhereTheConsum == WhereTheConsum.Jump)

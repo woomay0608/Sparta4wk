@@ -1,34 +1,29 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody rigidbody;
-    Animator animator;
-    public GameObject PlayerBody;
-
-    public Action InteractAction;
-
-    Vector3 MoveDir;
     [Header("Move")]
     public float MoveSpeed;
     private float CurSpeed;
+    public Rigidbody Rigidbody;
+    public GameObject PlayerBody;
+    Vector3 moveDir;
+    Animator animator;
 
     [Header("Jump")]
     public float JumpPower;
     public LayerMask Layer;
 
-    
-    Vector3 CameraDir;
-    float CameraX;
     [Header("Camera")]
     public Transform CameraContainer;
     [Range(0,1f)]public float LookSenes;
     [Range(-180f, 180f)] public float MinCamera;
     [Range(-180f, 180f)] public float MaxCamera;
+    Vector3 cameraDir;
+    float cameraX;
 
     [Header("Inventory")]
     public GameObject Inventory;
@@ -38,15 +33,19 @@ public class PlayerController : MonoBehaviour
 
     [Header("Invincibility")]
     public bool IsInvincibility;
+
     [Header("Wall")]
     public float WallSpeed;
     public bool IsWall = false;
+
+    [Header("Interact")]
+    public Action InteractAction;
 
 
 
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        Rigidbody = GetComponent<Rigidbody>();
         animator = PlayerBody.GetComponentInChildren<Animator>();
         CurSpeed = MoveSpeed;
 
@@ -62,25 +61,25 @@ public class PlayerController : MonoBehaviour
     }
     public void OnMove(InputValue value)
     {
-        MoveDir = value.Get<Vector2>();
+        moveDir = value.Get<Vector2>();
     }
     private void Move()
     {
         if (!IsWall)
         {
-            rigidbody.useGravity = true;
-            Vector3 n = MoveDir.x * transform.right + transform.forward * MoveDir.y;
+            Rigidbody.useGravity = true;
+            Vector3 n = moveDir.x * transform.right + transform.forward * moveDir.y;
             n *= MoveSpeed;
-            n.y = rigidbody.velocity.y;
-            rigidbody.velocity = n;
-            animator.SetBool("IsMoving", MoveDir.magnitude > 0);
+            n.y = Rigidbody.velocity.y;
+            Rigidbody.velocity = n;
+            animator.SetBool("IsMoving", moveDir.magnitude > 0);
         }
         else
         {
-            rigidbody.useGravity = false;
-            Vector3 n = MoveDir.y * transform.up + transform.right *MoveDir.x ;
+            Rigidbody.useGravity = false;
+            Vector3 n = moveDir.y * transform.up + transform.right *moveDir.x ;
             n *= WallSpeed;
-            rigidbody.velocity = n;
+            Rigidbody.velocity = n;
         }
         
         
@@ -102,30 +101,30 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if(PlayerManager.Instance.Player.curJumpCount == 0) 
+        if(PlayerManager.Instance.Player.CurJumpCount == 0) 
         {
             return; 
         }
         else
         {
        
-            rigidbody.AddForce(Vector3.up * JumpPower, ForceMode.Impulse);
+            Rigidbody.AddForce(Vector3.up * JumpPower, ForceMode.Impulse);
             animator.SetTrigger("IsJump");
-            PlayerManager.Instance.Player.curJumpCount--;
+            PlayerManager.Instance.Player.CurJumpCount--;
         }
         
     }
     public void OnLook(InputValue value)
     {
-        CameraDir = value.Get<Vector2>();
+        cameraDir = value.Get<Vector2>();
     }
 
     private void Look()
     {
-        CameraX += CameraDir.y * LookSenes;
-        CameraX = Mathf.Clamp(CameraX, MinCamera, MaxCamera);
-        CameraContainer.localEulerAngles = new Vector3(-CameraX, 0f, 0f);
-        transform.eulerAngles += new Vector3(0f, CameraDir.x * LookSenes, 0f);
+        cameraX += cameraDir.y * LookSenes;
+        cameraX = Mathf.Clamp(cameraX, MinCamera, MaxCamera);
+        CameraContainer.localEulerAngles = new Vector3(-cameraX, 0f, 0f);
+        transform.eulerAngles += new Vector3(0f, cameraDir.x * LookSenes, 0f);
 
 
         //CameraContainer.transform.eulerAngles += new Vector3(-CameraDir.x, 0f, 0f);
