@@ -51,8 +51,11 @@ public class PlayerRay : MonoBehaviour
                 IsDestroyOk = false;
                 Name.text = itemObject.GetName();
                 Description.text = itemObject.GetDescription();
-               
                 PlayerManager.Instance.Player.Curiteminfo = itemObject.info;
+                if(itemObject.info.Type == ItemType.Other)
+                {
+                    PlayerManager.Instance.PlayerController.InteractAction = itemObject.OnInteract;
+                }
             }
         }
         else
