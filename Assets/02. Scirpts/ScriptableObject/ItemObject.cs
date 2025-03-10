@@ -14,4 +14,8 @@ public class ItemObject : MonoBehaviour
     {
         return info.ItemDescrip;
     }
+    public string GetText()
+    {
+        return info.InteractText;
+    }
 }

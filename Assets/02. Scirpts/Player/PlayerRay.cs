@@ -13,7 +13,10 @@ public class PlayerRay : MonoBehaviour
     ItemObject itemObject;
     [SerializeField] private TextMeshProUGUI Name;
     [SerializeField] private TextMeshProUGUI Description;
-
+    [SerializeField] private GameObject Text;
+    GameObject text;
+    bool IsTextOk = true;
+    bool IsDestroyOk = false;
 
     private void Start()
     {
@@ -42,15 +45,25 @@ public class PlayerRay : MonoBehaviour
         {
             if (hit.transform.TryGetComponent(out itemObject))
             {
+
+                StartCoroutine(SetText());
+                IsTextOk = false;
+                IsDestroyOk = false;
                 Name.text = itemObject.GetName();
                 Description.text = itemObject.GetDescription();
+               
                 PlayerManager.Instance.Player.Curiteminfo = itemObject.info;
             }
         }
         else
         {
+            if(text != null)
+                Destroy(text);
+            IsTextOk = true;
+            IsDestroyOk = true;
             Name.text = string.Empty;
-            Description.text = string.Empty; ;
+            Description.text = string.Empty;
+             
             PlayerManager.Instance.Player.Curiteminfo = null;
         }
     }
@@ -79,6 +92,17 @@ public class PlayerRay : MonoBehaviour
         {
             PlayerManager.Instance.PlayerController.IsWall = false;
         }
+    }
+
+    private IEnumerator SetText()
+    {
+        if (IsTextOk)
+        {
+            text = Instantiate(Text, itemObject.transform);
+            text.GetComponent<InteractiveText>().SetText(itemObject.GetText());
+        }
+        yield return new WaitUntil(() =>IsDestroyOk );
+        
     }
 
 

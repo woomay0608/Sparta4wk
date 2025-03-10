@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     public GameObject PlayerBody;
 
-
+    public Action InteractAction;
 
     Vector3 MoveDir;
     [Header("Move")]
@@ -136,6 +137,13 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Good");
             Slots.CapturedItemToInvetory(PlayerManager.Instance.Player.Curiteminfo);
+        }
+    }
+    public void OnInteract()
+    {
+        if (PlayerManager.Instance.Player.Curiteminfo != null && PlayerManager.Instance.Player.Curiteminfo.Type == ItemType.Other)
+        {
+            InteractAction();
         }
     }
 
