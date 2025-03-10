@@ -105,8 +105,8 @@ GameObject:
   - component: {fileID: 926902125359978606}
   - component: {fileID: 6896921028321511517}
   - component: {fileID: 2673991919534551070}
-  - component: {fileID: -860265851219709287}
   - component: {fileID: 8832381235407852593}
+  - component: {fileID: 3002836524471513143}
   m_Layer: 8
   m_Name: Lamp
   m_TagString: Untagged
@@ -182,21 +182,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-860265851219709287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3080707471284472941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 501813c9ef846924a80e2a7f82086726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  info: {fileID: 11400000, guid: bffa1b2e5329a82488986ad56d196a22, type: 2}
-  ItemName: 
-  ItemDesription: 
 --- !u!65 &8832381235407852593
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -218,6 +203,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.40224445, y: 10.000019, z: 0.55}
   m_Center: {x: 0.000000014901161, y: 5.000001, z: 0.08}
+--- !u!114 &3002836524471513143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3080707471284472941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d758b8bc1afb34418fc0695a3fb03f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  info: {fileID: 11400000, guid: bffa1b2e5329a82488986ad56d196a22, type: 2}
 --- !u!1 &6259740105660186087
 GameObject:
   m_ObjectHideFlags: 0
