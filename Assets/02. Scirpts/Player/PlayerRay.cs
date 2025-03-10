@@ -83,7 +83,7 @@ public class PlayerRay : MonoBehaviour
                 PlayerManager.Instance.PlayerController.IsWall = true;
                 BoxCollider Collider = hit.transform.GetComponent<BoxCollider>();
                 float Height = Collider.bounds.size.y;
-                float WallJump = Collider.bounds.min.y + (0.99f* Height);
+                float WallJump = Collider.bounds.min.y + (0.90f* Height);
                 if (WallJump <=  ray.origin.y)
                 {
                     PlayerManager.Instance.Player.transform.position = new Vector3(PlayerManager.Instance.Player.transform.position.x + 1f,

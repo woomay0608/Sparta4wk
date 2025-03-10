@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5825882362193693603}
   - component: {fileID: 2309619883616974682}
   - component: {fileID: 353239871401537318}
+  - component: {fileID: -3993037615742371515}
   m_Layer: 8
   m_Name: BearGryllsTent
   m_TagString: Untagged
@@ -85,6 +86,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-3993037615742371515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4885231199823583104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 501813c9ef846924a80e2a7f82086726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  info: {fileID: 11400000, guid: 6fbf5fb03f3c4544cb77efe97383d65b, type: 2}
 --- !u!1 &6123456013798186735
 GameObject:
   m_ObjectHideFlags: 0

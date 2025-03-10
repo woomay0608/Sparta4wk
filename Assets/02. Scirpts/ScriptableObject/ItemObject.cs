@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ItemObject : MonoBehaviour
+public  class ItemObject : MonoBehaviour
 {
     public ItemInfo info;
 
@@ -19,5 +19,9 @@ public abstract class ItemObject : MonoBehaviour
         return info.InteractText;
     }
 
-    public abstract void OnInteract();
+    public virtual void OnInteract()
+    {
+
+    }
+
 }
