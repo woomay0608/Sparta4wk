@@ -305,11 +305,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea926e94063d31241b5a6c2321d98c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  icon: {fileID: 1102552305}
+  Index: 0
+  Icon: {fileID: 0}
   SomeItemComein: 0
-  itemCount: 0
-  Count: {fileID: 1746711002}
+  ItemCount: 0
+  TxtCount: {fileID: 0}
   Selected: 0
 --- !u!114 &10663354
 MonoBehaviour:
@@ -762,11 +762,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea926e94063d31241b5a6c2321d98c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  icon: {fileID: 219454314}
+  Index: 0
+  Icon: {fileID: 0}
   SomeItemComein: 0
-  itemCount: 0
-  Count: {fileID: 1837554514}
+  ItemCount: 0
+  TxtCount: {fileID: 0}
   Selected: 0
 --- !u!114 &113555408
 MonoBehaviour:
@@ -6500,11 +6500,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea926e94063d31241b5a6c2321d98c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  icon: {fileID: 1823212524}
+  Index: 0
+  Icon: {fileID: 0}
   SomeItemComein: 0
-  itemCount: 0
-  Count: {fileID: 794598349}
+  ItemCount: 0
+  TxtCount: {fileID: 0}
   Selected: 0
 --- !u!114 &264628250
 MonoBehaviour:
@@ -6871,11 +6871,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea926e94063d31241b5a6c2321d98c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  icon: {fileID: 1465667467}
+  Index: 0
+  Icon: {fileID: 0}
   SomeItemComein: 0
-  itemCount: 0
-  Count: {fileID: 271936150}
+  ItemCount: 0
+  TxtCount: {fileID: 0}
   Selected: 0
 --- !u!114 &293780472
 MonoBehaviour:
@@ -13072,8 +13072,8 @@ MonoBehaviour:
   info: {fileID: 11400000, guid: 6a242af038f988743881b5ec553895b0, type: 2}
   camera: {fileID: 963194227}
   AgentCamera: {fileID: 1516330191}
-  meshSurface: {fileID: 1139251882}
-  agent: {fileID: 1447745458}
+  MeshSurface: {fileID: 1139251882}
+  Agent: {fileID: 1447745458}
   Destination: {fileID: 1830079492}
 --- !u!1 &624904061
 GameObject:
@@ -13318,9 +13318,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245669c48f02f2746a41e09e1db6507c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 0}
-  PlayerBody: {fileID: 1756211128858480364}
   MoveSpeed: 10
+  Rigidbody: {fileID: 0}
+  PlayerBody: {fileID: 1756211128858480364}
   JumpPower: 5
   Layer:
     serializedVersion: 2
@@ -13443,11 +13443,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHealth: 3
-  curhealth: 3
+  Curhealth: 0
   JumpCount: 3
-  curJumpCount: 0
+  CurJumpCount: 0
   Curiteminfo: {fileID: 0}
-  slot: {fileID: 0}
+  Slot: {fileID: 0}
   Invincibility: {fileID: 346022875}
   Back: {fileID: 1742079155}
 --- !u!114 &671977341
@@ -13462,16 +13462,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591055386f2e57649bccba20cba9b86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerMask:
+  LayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   WallLayer:
     serializedVersion: 2
     m_Bits: 64
-  angle: 0
+  Angle: 0
   Name: {fileID: 1075455763}
   Description: {fileID: 662411931}
-  Text: {fileID: 2311908841135176197, guid: 32bd896812a4f5a499c771cc04c8f921, type: 3}
+  TxtPrefab: {fileID: 0}
 --- !u!1 &681619904
 GameObject:
   m_ObjectHideFlags: 0
@@ -14502,11 +14502,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea926e94063d31241b5a6c2321d98c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  icon: {fileID: 1018119912}
+  Index: 0
+  Icon: {fileID: 0}
   SomeItemComein: 0
-  itemCount: 0
-  Count: {fileID: 2003175684}
+  ItemCount: 0
+  TxtCount: {fileID: 0}
   Selected: 0
 --- !u!114 &806396368
 MonoBehaviour:
@@ -16422,11 +16422,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea926e94063d31241b5a6c2321d98c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  icon: {fileID: 1619751092}
+  Index: 0
+  Icon: {fileID: 0}
   SomeItemComein: 0
-  itemCount: 0
-  Count: {fileID: 1292432996}
+  ItemCount: 0
+  TxtCount: {fileID: 0}
   Selected: 0
 --- !u!114 &1070651255
 MonoBehaviour:
@@ -16866,11 +16866,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea926e94063d31241b5a6c2321d98c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  icon: {fileID: 2055360681}
+  Index: 0
+  Icon: {fileID: 0}
   SomeItemComein: 0
-  itemCount: 0
-  Count: {fileID: 1890784055}
+  ItemCount: 0
+  TxtCount: {fileID: 0}
   Selected: 0
 --- !u!114 &1102557611
 MonoBehaviour:
@@ -18220,19 +18220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3fca84469cc26479560ee2ed246737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slots:
-  - {fileID: 113555407}
-  - {fileID: 293780471}
-  - {fileID: 806396367}
-  - {fileID: 264628249}
-  - {fileID: 1950450506}
-  - {fileID: 2026139723}
-  - {fileID: 2018017017}
-  - {fileID: 1102557610}
-  - {fileID: 1070651254}
-  - {fileID: 1486022614}
-  - {fileID: 10663353}
-  - {fileID: 1851313763}
+  SlotArray: []
   UseEquipBtn: {fileID: 1768485079}
   RemoveBtn: {fileID: 948426557}
   UnEquipButton: {fileID: 423881135}
@@ -18754,11 +18742,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea926e94063d31241b5a6c2321d98c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  icon: {fileID: 624904063}
+  Index: 0
+  Icon: {fileID: 0}
   SomeItemComein: 0
-  itemCount: 0
-  Count: {fileID: 681619906}
+  ItemCount: 0
+  TxtCount: {fileID: 0}
   Selected: 0
 --- !u!114 &1486022615
 MonoBehaviour:
@@ -21326,11 +21314,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea926e94063d31241b5a6c2321d98c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  icon: {fileID: 7878042}
+  Index: 0
+  Icon: {fileID: 0}
   SomeItemComein: 0
-  itemCount: 0
-  Count: {fileID: 957481480}
+  ItemCount: 0
+  TxtCount: {fileID: 0}
   Selected: 0
 --- !u!114 &1851313764
 MonoBehaviour:
@@ -21706,11 +21694,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea926e94063d31241b5a6c2321d98c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  icon: {fileID: 824857609}
+  Index: 0
+  Icon: {fileID: 0}
   SomeItemComein: 0
-  itemCount: 0
-  Count: {fileID: 1136664182}
+  ItemCount: 0
+  TxtCount: {fileID: 0}
   Selected: 0
 --- !u!114 &1950450507
 MonoBehaviour:
@@ -22397,11 +22385,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea926e94063d31241b5a6c2321d98c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  icon: {fileID: 270992193}
+  Index: 0
+  Icon: {fileID: 0}
   SomeItemComein: 0
-  itemCount: 0
-  Count: {fileID: 2019921343}
+  ItemCount: 0
+  TxtCount: {fileID: 0}
   Selected: 0
 --- !u!114 &2018017018
 MonoBehaviour:
@@ -22688,11 +22676,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea926e94063d31241b5a6c2321d98c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  icon: {fileID: 1347596170}
+  Index: 0
+  Icon: {fileID: 0}
   SomeItemComein: 0
-  itemCount: 0
-  Count: {fileID: 76464835}
+  ItemCount: 0
+  TxtCount: {fileID: 0}
   Selected: 0
 --- !u!114 &2026139724
 MonoBehaviour:
@@ -30984,7 +30972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBake: 0
-  aI: {fileID: 0}
+  AI: {fileID: 0}
 --- !u!65 &4449802141129653756
 BoxCollider:
   m_ObjectHideFlags: 0
