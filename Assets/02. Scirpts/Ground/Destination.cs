@@ -12,8 +12,8 @@ public class Destination : MonoBehaviour
         if (other.transform.CompareTag("AI"))
         {
             other.gameObject.GetComponent<NavMeshAgent>().enabled = false;
-            other.transform.position = AI.StartPo();
-            AI.CameraOn();
+            other.transform.position = AI.GetStartPosition();
+            AI.MainCameraOn();
             PlayerManager.Instance.PlayerController.gameObject.SetActive(true);
         }
     }

@@ -25,7 +25,7 @@ public class Ground : MonoBehaviour
     {
         if (IsBake)
         {
-            aI.SurfaceBake();
+            aI.AISurfaceBake();
         }
     }
 

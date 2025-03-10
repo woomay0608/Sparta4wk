@@ -10,16 +10,16 @@ public class AI : ItemObject
     public Camera camera;
     public Camera AgentCamera;
     [Header("AI")]
-    public NavMeshSurface meshSurface;
-    public NavMeshAgent agent;
+    public NavMeshSurface MeshSurface;
+    public NavMeshAgent Agent;
     public GameObject Destination;
-    private Vector3 StartPosition;
+    private Vector3 startPosition;
  
     private void Start()
     {
-        StartPosition = agent.transform.position;
-        meshSurface = GetComponentInParent<NavMeshSurface>();
-        agent = GetComponentInChildren<NavMeshAgent>();
+        startPosition = Agent.transform.position;
+        MeshSurface = GetComponentInParent<NavMeshSurface>();
+        Agent = GetComponentInChildren<NavMeshAgent>();
         camera = Camera.main;
     }
   
@@ -27,31 +27,31 @@ public class AI : ItemObject
     public override void OnInteract()
     {
         PlayerManager.Instance.PlayerController.gameObject.SetActive(false);
-        CameraDonw();
-        SurfaceBake();
-        agent.enabled = true;
-        agent.SetDestination(Destination.transform.position);
+        MainCameraDonw();
+        AISurfaceBake();
     }
 
-    public Vector3 StartPo()
+    public Vector3 GetStartPosition()
     {
-        return StartPosition;
+        return startPosition;
     }
 
-    public void CameraDonw()
+    public void MainCameraDonw()
     {
         camera.gameObject.SetActive(false);
         AgentCamera.gameObject.SetActive(true);
     }
-    public void CameraOn()
+    public void MainCameraOn()
     {
         camera.gameObject.SetActive(true);
         AgentCamera.gameObject.SetActive(false);
     }
 
-    public void SurfaceBake()
+    public void AISurfaceBake()
     {
-        meshSurface.BuildNavMesh();
+        MeshSurface.BuildNavMesh();
+        Agent.enabled = true;
+        Agent.SetDestination(Destination.transform.position);
     }
 
 
