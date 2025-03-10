@@ -143,6 +143,7 @@ public class PlayerController : MonoBehaviour
     {
         if (PlayerManager.Instance.Player.Curiteminfo != null && PlayerManager.Instance.Player.Curiteminfo.Type == ItemType.Other)
         {
+            if(InteractAction != null)
             InteractAction();
         }
     }
