@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 5190bde6b6f10f14d87fbf126f377dc4, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -825,9 +825,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1223257336}
     m_Modifications:
+    - target: {fileID: 93692667810303682, guid: 8901d572fc28f6f458d8d6a1491a7a6b, type: 3}
+      propertyPath: m_Constraints
+      value: 124
+      objectReference: {fileID: 0}
     - target: {fileID: 887522378287053788, guid: 8901d572fc28f6f458d8d6a1491a7a6b, type: 3}
       propertyPath: type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3966642271985987430, guid: 8901d572fc28f6f458d8d6a1491a7a6b, type: 3}
       propertyPath: m_Name
@@ -835,7 +839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5924440376427537230, guid: 8901d572fc28f6f458d8d6a1491a7a6b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 64.38
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 5924440376427537230, guid: 8901d572fc28f6f458d8d6a1491a7a6b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -875,7 +879,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5924440376427537230, guid: 8901d572fc28f6f458d8d6a1491a7a6b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1830079493}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8901d572fc28f6f458d8d6a1491a7a6b, type: 3}
 --- !u!1 &215193425
@@ -14854,7 +14861,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 39adfa44684ab5e4285c383aa83c7189, type: 2}
+  m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
 --- !u!1 &1164228662
 GameObject:
@@ -14968,7 +14975,6 @@ Transform:
   - {fileID: 1815968418}
   - {fileID: 697779011}
   - {fileID: 1507525420}
-  - {fileID: 1830079493}
   - {fileID: 1209546032}
   m_Father: {fileID: 1139251881}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16246,8 +16252,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634560587}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.6713326, z: 0, w: 0.7411563}
-  m_LocalPosition: {x: 7.63, y: 25.31, z: -53.5}
+  m_LocalRotation: {x: -0, y: -0.6780407, z: -0, w: 0.73502433}
+  m_LocalPosition: {x: 8.999565, y: 26.013626, z: -55.529144}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16266,12 +16272,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
-  m_StartPoint: {x: 1.4160833, y: 0, z: -2.9081604}
-  m_EndPoint: {x: 2.8925602, y: 1.4072495, z: 5.2336884}
+  m_StartPoint: {x: 0.0000017870003, y: 0.7036209, z: -11.830485}
+  m_EndPoint: {x: -0.0517498, y: -0.70362854, z: 3.4738903}
   m_Width: 0
   m_CostModifier: -1
   m_Bidirectional: 1
-  m_AutoUpdatePosition: 0
+  m_AutoUpdatePosition: 1
   m_Area: 0
 --- !u!1 &1648830286
 GameObject:
@@ -17106,12 +17112,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830079492}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 69.2, y: 97.24, z: -3.18}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.53, y: 7.019989, z: -2.7600007}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1223257336}
+  m_Father: {fileID: 1209546032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1830079494
 CapsuleCollider:
@@ -17128,14 +17134,14 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.78925073
-  m_Height: 2
+  m_Radius: 1.1627052
+  m_Height: 2.3254104
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: 0.2892505}
+  m_Center: {x: 0, y: 0, z: -0.08420396}
 --- !u!23 &1830079495
 MeshRenderer:
   m_ObjectHideFlags: 0

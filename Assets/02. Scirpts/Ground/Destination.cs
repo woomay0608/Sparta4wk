@@ -6,12 +6,13 @@ using UnityEngine.AI;
 public class Destination : MonoBehaviour
 {
     public AI AI;
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.transform.CompareTag("AI"))
+        if (other.transform.CompareTag("AI"))
         {
-            collision.gameObject.GetComponent<NavMeshAgent>().enabled = false;
-            collision.transform.position = AI.StartPo();
+            other.gameObject.GetComponent<NavMeshAgent>().enabled = false;
+            other.transform.position = AI.StartPo();
             AI.CameraOn();
             PlayerManager.Instance.PlayerController.gameObject.SetActive(true);
         }
