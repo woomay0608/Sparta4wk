@@ -6,8 +6,10 @@ using UnityEngine.AI;
 
 public class AI : ItemObject
 {
+    [Header("Camera")]
     public Camera camera;
     public Camera AgentCamera;
+    [Header("AI")]
     public NavMeshSurface meshSurface;
     public NavMeshAgent agent;
     public GameObject Destination;
@@ -25,7 +27,7 @@ public class AI : ItemObject
     {
         PlayerManager.Instance.PlayerController.gameObject.SetActive(false);
         CameraDonw();
-        meshSurface.BuildNavMesh();
+        SurfaceBake();
         agent.enabled = true;
         agent.SetDestination(Destination.transform.position);
     }
@@ -44,6 +46,11 @@ public class AI : ItemObject
     {
         camera.gameObject.SetActive(true);
         AgentCamera.gameObject.SetActive(false);
+    }
+
+    public void SurfaceBake()
+    {
+        meshSurface.BuildNavMesh();
     }
 
 }
