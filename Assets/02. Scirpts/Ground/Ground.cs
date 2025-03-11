@@ -17,12 +17,11 @@ public class Ground : MonoBehaviour
         }
 
     }
-
+    ///////////////특정 블록에만 동적 베이킹 실행 함수/////////////////////
     private void OnCollisionStay(Collision collision)
     {
         if (IsBake && collision.gameObject.CompareTag("AI"))
         {
-            //추가설정으로 어떤 땅에는 다시 에이전트가 다닐 수 있는 표면을 설정하도록 함
             ai.AISurfaceBake();
         }
     }

@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
     {
         Look();
     }
+    ///////////////이동 함수/////////////////////
     public void OnMove(InputValue value)
     {
         moveDir = value.Get<Vector2>();
@@ -101,6 +102,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    ///////////////점프 함수/////////////////////
     public void OnJump()
     {
         if(PlayerManager.Instance.IsPlayerGround)
@@ -130,6 +132,7 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+    ///////////////카메라 이동 함수/////////////////////
     public void OnLook(InputValue value)
     {
         cameraDir = value.Get<Vector2>();
@@ -141,11 +144,9 @@ public class PlayerController : MonoBehaviour
         cameraX = Mathf.Clamp(cameraX, MinCamera, MaxCamera);
         CameraContainer.localEulerAngles = new Vector3(-cameraX, 0f, 0f);
         transform.eulerAngles += new Vector3(0f, cameraDir.x * LookSenes, 0f);
-
-
-        //CameraContainer.transform.eulerAngles += new Vector3(-CameraDir.x, 0f, 0f);
     }
 
+    ///////////////아이템 습득 함수/////////////////////
     public void OnCapture()
     {
         if(PlayerManager.Instance.Player.Curiteminfo != null) 
@@ -153,6 +154,7 @@ public class PlayerController : MonoBehaviour
             Slots.CapturedItemToInvetory(PlayerManager.Instance.Player.Curiteminfo);
         }
     }
+    ///////////////상호작용 함수/////////////////////
     public void OnInteract()
     {
         if (PlayerManager.Instance.Player.Curiteminfo != null && PlayerManager.Instance.Player.Curiteminfo.Type == ItemType.Other)
@@ -161,7 +163,7 @@ public class PlayerController : MonoBehaviour
             InteractAction();
         }
     }
-
+    ///////////////인벤토리 열기 함수/////////////////////
     public void OnInventory()
     {
         if(Inventory.gameObject.activeInHierarchy)
@@ -177,13 +179,13 @@ public class PlayerController : MonoBehaviour
 
 
 
-
+    ///////////////벽 타기 함수/////////////////////
     public void OnWallRide(InputValue value)
     {
         Integer = value.isPressed ? 1 : 0;
     }
 
-
+    ///////////////벽 넘기 함수/////////////////////
     public void OnJumpOverWall()
     {
         if(PlayerManager.Instance.PlayerUI.IsOkWallRideUISetActive() && IsWall)
@@ -193,7 +195,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
+    ///////////////각종 효과시간이 있는 아이템 적용 함수/////////////////////
     private IEnumerator JumpCountUp()
     {
         PlayerManager.Instance.Player.JumpCountUP();

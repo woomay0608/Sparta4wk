@@ -33,6 +33,8 @@ public class PlayerUI : MonoBehaviour
         }
         isOkWallRideUi = transform.GetChild(4).gameObject;
     }
+
+    ///////////////최대 갯수와 현재 갯수를 비교해서 UI에 띄우는 함수/////////////////////
     public void UiUpdate()
     {
         int MaxJumpCount  = Jump.transform.childCount;

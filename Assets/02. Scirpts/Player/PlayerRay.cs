@@ -39,7 +39,7 @@ public class PlayerRay : MonoBehaviour
     }
 
 
-
+    ///////////////아이템 이름과 설명 띄우는 함수/////////////////////
     private void ShowItemNameAndDescriptionToRay(out RaycastHit hit, Ray ray)
     {
         if (Physics.Raycast(ray, out hit, 1f ,LayerMask))
@@ -72,7 +72,7 @@ public class PlayerRay : MonoBehaviour
         }
     }
 
-
+    ///////////////벽타기 함수/////////////////////
     public void wallRide(out RaycastHit hit, Ray ray)
     {
         if(Physics.Raycast(ray, out hit, 0.5f, WallLayer))
@@ -102,12 +102,15 @@ public class PlayerRay : MonoBehaviour
         }
     }
 
+    ///////////////벽넘기 함수/////////////////////
     public void JumpOverWall(float Height) 
     {
         PlayerManager.Instance.Player.transform.position = new Vector3(PlayerManager.Instance.Player.transform.position.x + 1f,
     PlayerManager.Instance.Player.transform.position.y + Mathf.Abs(Height * 0.10f) + 1f, PlayerManager.Instance.Player.transform.position.z);
     }
 
+
+    ///////////////F: ~~ 같은 텍스트 보여주는 함수/////////////////////
     private IEnumerator SetText()
     {
         if (IsTextOk)

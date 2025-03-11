@@ -45,6 +45,7 @@ public class AI : ItemObject
         AgentCamera.gameObject.SetActive(false);
     }
 
+    ///////////////동적 베이킹 함수/////////////////////
     public void AISurfaceBake()
     {
         MeshSurface.BuildNavMesh();

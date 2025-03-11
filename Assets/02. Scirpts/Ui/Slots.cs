@@ -21,6 +21,8 @@ public class Slots : MonoBehaviour
         }
         ItemInfoTextAndButtonSetDown();
     }
+
+    ///////////////주기적으로 UI 갱신 및 비워지면 채우기 함수/////////////////////
     private void Update()
     {
         for(int i = 0;i < SlotArray.Length;i++)
@@ -46,6 +48,7 @@ public class Slots : MonoBehaviour
         
     }
 
+    ///////////////중복/stack 체크 뒤 인벤토리에 넣는 함수/////////////////////
     public void CapturedItemToInvetory(ItemInfo itemInfo)
     {
         for (int i = 0;i < SlotArray.Length;i++) 
@@ -80,7 +83,7 @@ public class Slots : MonoBehaviour
     }
 
 
-
+    ///////////////같은 아이템이 있는지 판단 함수/////////////////////
     private bool IsSameItemInBackPack(ItemInfo itemInfo)
     {
         for(int i = 0 ;i < SlotArray.Length;i++)
@@ -97,7 +100,7 @@ public class Slots : MonoBehaviour
         return false;
     }
 
-
+    ///////////////아이템 선택시 특정 버튼과 텍스트 띄우는 함수/////////////////////
     public void SelectItem(int index)
     {
         if (SlotArray[index].GetItemInfo() == null)
@@ -132,7 +135,7 @@ public class Slots : MonoBehaviour
         RemoveBtn.onClick.AddListener(() => RemoveItem(PlayerManager.Instance.Player.Slot));
 
     }
-
+    ///////////////인벤토리 정보 비우기 함수/////////////////////
     public void ItemInfoTextAndButtonSetDown()
     {
         SelectedItemName.text = string.Empty;
@@ -141,7 +144,7 @@ public class Slots : MonoBehaviour
         UnEquipButton.gameObject.SetActive(false);
         RemoveBtn.gameObject.SetActive(false);
     }
-
+    ///////////////선택하고 아웃라인 띄우기 함수/////////////////////
     public void Selected(int index)
     {
         for(int i = 0; i < SlotArray.Length; i++) 
@@ -154,7 +157,7 @@ public class Slots : MonoBehaviour
     }
 
 
-
+    ///////////////아이템 지우기 함수/////////////////////
     private void RemoveItem(IndiSlot indi)
     {
         indi.ItemCount--;
@@ -169,6 +172,7 @@ public class Slots : MonoBehaviour
         }
       
     }
+    ///////////////장착해제 함수/////////////////////
     private void SlotItemUnEquip(IndiSlot indi)
     {
         if(indi.GetItemInfo().WhereTheEquip == WhereTheEquip.Back)
@@ -177,6 +181,7 @@ public class Slots : MonoBehaviour
             PlayerManager.Instance.Player.JunpCountDown();
         }
     }
+    ///////////////사용/ 장착  함수/////////////////////
     private void SlotItemuse(IndiSlot indi)
     {
         if(indi.GetItemInfo().Type == ItemType.Consum)

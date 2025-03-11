@@ -31,6 +31,7 @@ public class Platform : MonoBehaviour
         Moving();
     }
 
+    ///////////////이동 함수/////////////////////
     private void Moving()
     {
 
