@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: 06.Ai
   m_EditorClassIdentifier: 
   Id: 6
-  ItemName: Ai
-  ItemDescrip: AI, Can find Way
+  ItemName: AI
+  ItemDescrip: "\uAE38\uC744 \uCC3E\uC544\uC90D\uB2C8\uB2E4"
   Prefabs: {fileID: 0}
   Type: 1
   WhereTheConsum: 0
   WhereTheEquip: 0
   Icon: {fileID: 21300002, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
-  InteractText: 'F: Find Way'
+  InteractText: "F: \uAE38\uCC3E\uAE30"
   IsEquip: 0
   IsConsumable: 0
   Value: 0

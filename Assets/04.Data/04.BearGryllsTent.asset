@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: 04.BearGryllsTent
   m_EditorClassIdentifier: 
   Id: 4
-  ItemName: BearGryllsTent
-  ItemDescrip: 'You have Invincibility for 5 Seconds '
+  ItemName: "\uBCA0\uC5B4\uADF8\uB9B4\uC2A4 \uD150\uD2B8"
+  ItemDescrip: "\uC7A0\uAE50 \uBB34\uC801\uC774 \uB428"
   Prefabs: {fileID: 8083450827453208624, guid: 36d6a23ac9c34de4a92c9a4ee5890ad8, type: 3}
   Type: 0
   WhereTheConsum: 3
   WhereTheEquip: 0
   Icon: {fileID: 21300048, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
-  InteractText: 'E: Get'
+  InteractText: "E: \uC2B5\uB4DD"
   IsEquip: 0
   IsConsumable: 1
   Value: 1
