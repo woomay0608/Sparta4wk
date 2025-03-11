@@ -4,7 +4,7 @@ public class Ground : MonoBehaviour
 {
 
     public bool IsBake = false;
-    public AI AI;
+    public AI ai;
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.collider.CompareTag("Player") || collision.collider.CompareTag("AI"))
@@ -20,10 +20,10 @@ public class Ground : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (IsBake)
+        if (IsBake && collision.gameObject.CompareTag("AI"))
         {
             //추가설정으로 어떤 땅에는 다시 에이전트가 다닐 수 있는 표면을 설정하도록 함
-            AI.AISurfaceBake();
+            ai.AISurfaceBake();
         }
     }
 

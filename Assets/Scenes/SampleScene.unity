@@ -1228,6 +1228,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 887522378287053788, guid: 8901d572fc28f6f458d8d6a1491a7a6b, type: 3}
+      propertyPath: Speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 887522378287053788, guid: 8901d572fc28f6f458d8d6a1491a7a6b, type: 3}
       propertyPath: speed
       value: 8
       objectReference: {fileID: 0}
@@ -1281,6 +1285,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8218360423215746314, guid: 8901d572fc28f6f458d8d6a1491a7a6b, type: 3}
       propertyPath: aI
+      value: 
+      objectReference: {fileID: 589148465}
+    - target: {fileID: 8218360423215746314, guid: 8901d572fc28f6f458d8d6a1491a7a6b, type: 3}
+      propertyPath: ai
       value: 
       objectReference: {fileID: 589148465}
     - target: {fileID: 8218360423215746314, guid: 8901d572fc28f6f458d8d6a1491a7a6b, type: 3}
@@ -13088,8 +13096,6 @@ MonoBehaviour:
   info: {fileID: 11400000, guid: 6a242af038f988743881b5ec553895b0, type: 2}
   camera: {fileID: 963194227}
   AgentCamera: {fileID: 1516330191}
-  MeshSurface: {fileID: 1139251882}
-  Agent: {fileID: 1447745458}
   Destination: {fileID: 1830079492}
 --- !u!1 &624904061
 GameObject:
@@ -13347,7 +13353,7 @@ MonoBehaviour:
   MaxCamera: 0
   Inventory: {fileID: 1884276762}
   Slots: {fileID: 1393198994}
-  IsInvincibility: 0
+  IsInvincibilityEffect: 0
   WallSpeed: 10
   IsWall: 0
 --- !u!65 &671977336
@@ -13437,7 +13443,7 @@ Transform:
   m_GameObject: {fileID: 671977334}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 93.1, z: 0}
+  m_LocalPosition: {x: 6.3, y: 7.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15111,6 +15117,10 @@ PrefabInstance:
       objectReference: {fileID: 589148465}
     - target: {fileID: 1986165671420543811, guid: 7cdd4e61a49d4d84d9356fa1f19f87a1, type: 3}
       propertyPath: aI
+      value: 
+      objectReference: {fileID: 589148465}
+    - target: {fileID: 1986165671420543811, guid: 7cdd4e61a49d4d84d9356fa1f19f87a1, type: 3}
+      propertyPath: ai
       value: 
       objectReference: {fileID: 589148465}
     - target: {fileID: 1986165671420543811, guid: 7cdd4e61a49d4d84d9356fa1f19f87a1, type: 3}
@@ -20919,7 +20929,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33e8b8860bb4a5e45b51e11404c8813a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AI: {fileID: 589148465}
 --- !u!1 &1837554512
 GameObject:
   m_ObjectHideFlags: 0
@@ -22219,7 +22228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3131384767575181830, guid: b9ac484ee971f05409b76723149150a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.145
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3131384767575181830, guid: b9ac484ee971f05409b76723149150a9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -23673,6 +23682,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6354110350432221343, guid: 36d6a23ac9c34de4a92c9a4ee5890ad8, type: 3}
       propertyPath: Bullet
+      value: 
+      objectReference: {fileID: 444186758430281070, guid: 9bd819188c2cd7a48bf24b35de7563fb, type: 3}
+    - target: {fileID: 6354110350432221343, guid: 36d6a23ac9c34de4a92c9a4ee5890ad8, type: 3}
+      propertyPath: BulletPrefab
       value: 
       objectReference: {fileID: 444186758430281070, guid: 9bd819188c2cd7a48bf24b35de7563fb, type: 3}
     - target: {fileID: 6354110350432221343, guid: 36d6a23ac9c34de4a92c9a4ee5890ad8, type: 3}
@@ -31039,7 +31052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBake: 0
-  AI: {fileID: 0}
+  ai: {fileID: 0}
 --- !u!65 &4449802141129653756
 BoxCollider:
   m_ObjectHideFlags: 0

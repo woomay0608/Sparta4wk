@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     Vector3 moveDir;
     Animator animator;
 
+    int Integer;
+
     [Header("Jump")]
     public float JumpPower;
     public LayerMask Layer;
@@ -32,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public Slots Slots;
 
     [Header("Invincibility")]
-    public bool IsInvincibility;
+    public bool IsInvincibilityEffect;
 
     [Header("Wall")]
     public float WallSpeed;
@@ -50,10 +52,23 @@ public class PlayerController : MonoBehaviour
         CurSpeed = MoveSpeed;
 
     }
+
+    private void Update()
+    {
+        if (Integer == 1)
+        {
+            PlayerManager.Instance.PlayerRay.wallRide(out PlayerManager.Instance.PlayerRay.hit, PlayerManager.Instance.PlayerRay.ray);
+        }
+        else
+        {
+            IsWall = false;
+        }
+    }
     private void FixedUpdate()
     {
         Move();
 
+       
     }
     private void LateUpdate()
     {
@@ -134,7 +149,6 @@ public class PlayerController : MonoBehaviour
     {
         if(PlayerManager.Instance.Player.Curiteminfo != null) 
         {
-            Debug.Log("Good");
             Slots.CapturedItemToInvetory(PlayerManager.Instance.Player.Curiteminfo);
         }
     }
@@ -159,6 +173,19 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+
+
+
+    public void OnWallRide(InputValue value)
+    {
+        Integer = value.isPressed ? 1 : 0;
+
+
+    }
+
+
+
 
     private IEnumerator JumpCountUp()
     {
@@ -187,10 +214,10 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Invincibility()
     {
-        IsInvincibility = true;
+        IsInvincibilityEffect = true;
         PlayerManager.Instance.Player.Invincibility.gameObject.SetActive(true);
         yield return new WaitForSeconds(5f);
-        IsInvincibility = false;
+        IsInvincibilityEffect = false;
         PlayerManager.Instance.Player.Invincibility.gameObject.SetActive(false);
 
     }

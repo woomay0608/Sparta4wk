@@ -15,7 +15,8 @@ public class PlayerRay : MonoBehaviour
     GameObject txtObject;
     bool IsTextOk = true;
     bool IsDestroyOk = false;
-
+    public Ray ray;
+    public RaycastHit hit;
     private void Start()
     {
         
@@ -26,11 +27,10 @@ public class PlayerRay : MonoBehaviour
     private void Update()
     {
         Vector3 RayPosition = transform.position + transform.up * 0.8f;
-        Ray ray =  new Ray(RayPosition, transform.forward);
+        ray =  new Ray(RayPosition, transform.forward);
         Debug.DrawRay(ray.origin, ray.direction);
-        RaycastHit hit;
         ShowItemNameAndDescriptionToRay(out hit,ray);
-        wallRide(out hit,ray);
+
 
 
     }
@@ -70,7 +70,7 @@ public class PlayerRay : MonoBehaviour
     }
 
 
-    private void wallRide(out RaycastHit hit, Ray ray)
+    public void wallRide(out RaycastHit hit, Ray ray)
     {
         if(Physics.Raycast(ray, out hit, 0.5f, WallLayer))
         {
@@ -91,7 +91,7 @@ public class PlayerRay : MonoBehaviour
         }
         else
         {
-            PlayerManager.Instance.PlayerController.IsWall = false;
+            PlayerManager.Instance.PlayerController.IsWall= false;
         }
     }
 

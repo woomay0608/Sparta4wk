@@ -3,7 +3,13 @@ using UnityEngine.AI;
 
 public class Destination : MonoBehaviour
 {
-    public AI AI;
+    private AI AI;
+
+
+    private void Start()
+    {
+        AI = transform.parent.transform.GetChild(1).GetComponent<AI>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {

@@ -8,16 +8,16 @@ public class AI : ItemObject
     public Camera camera;
     public Camera AgentCamera;
     [Header("AI")]
-    public NavMeshSurface MeshSurface;
-    public NavMeshAgent Agent;
     public GameObject Destination;
+    private NavMeshSurface MeshSurface;
+    private NavMeshAgent Agent;
     private Vector3 startPosition;
  
     private void Start()
     {
-        startPosition = Agent.transform.position;
         MeshSurface = GetComponentInParent<NavMeshSurface>();
         Agent = GetComponentInChildren<NavMeshAgent>();
+        startPosition = Agent.transform.position;
         camera = Camera.main;
     }
   

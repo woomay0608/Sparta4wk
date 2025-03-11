@@ -16,6 +16,9 @@ public class PlayerManager : MonoBehaviour
     private PlayerController playerController;
     public PlayerController PlayerController { get { return playerController; } }
 
+    private PlayerRay playerRay;
+    public PlayerRay PlayerRay { get { return playerRay; } }
+
     public bool IsPlayerGround = false;
 
     private void Awake()
@@ -28,7 +31,9 @@ public class PlayerManager : MonoBehaviour
         player = FindAnyObjectByType<Player>();
         playerUI = FindAnyObjectByType<PlayerUI>();
         playerController = FindAnyObjectByType<PlayerController>();
+        playerRay = FindAnyObjectByType<PlayerRay>();
     }
+
 
     private void Update()
     {
