@@ -186,7 +186,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJumpOverWall()
     {
-        if(PlayerManager.Instance.PlayerUI.IsOkWallRideUISetActive())
+        if(PlayerManager.Instance.PlayerUI.IsOkWallRideUISetActive() && IsWall)
         {
             PlayerManager.Instance.PlayerRay.JumpOverWall(PlayerManager.Instance.PlayerRay.Height);
         }
