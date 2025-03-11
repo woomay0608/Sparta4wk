@@ -8,7 +8,7 @@ public class Destination : MonoBehaviour
 
     private void Start()
     {
-        AI = transform.parent.transform.GetChild(1).GetComponent<AI>();
+        AI = transform.parent.transform.GetComponentInChildren<AI>();
     }
 
     private void OnTriggerEnter(Collider other)

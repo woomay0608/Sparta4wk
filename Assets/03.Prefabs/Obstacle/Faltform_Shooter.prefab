@@ -119,6 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560fe9636b4a813419d013ca80f12131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsBake: 0
+  ai: {fileID: 0}
 --- !u!1 &3011064516378014548
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,9 +275,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WatingTime: 3
-  x: 3
-  y: 16
-  z: 24
+  x: 15
+  y: 20
+  z: 60
 --- !u!95 &4832759123488594543
 Animator:
   serializedVersion: 5
