@@ -16,7 +16,7 @@ public  class ItemObject : MonoBehaviour
     {
         return info.InteractText;
     }
-
+    ///////////////전등같은 상호작용 스크립트를 위한 함수/////////////////////
     public virtual void OnInteract()
     {
 
