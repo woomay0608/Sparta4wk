@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a16d635d3151e3499e47367a0573302, type: 3}
+  m_Name: 01.JumpFlower
+  m_EditorClassIdentifier: 
+  Id: 1
+  ItemName: "\uC810\uD504\uAF43"
+  ItemDescrip: "\uC810\uD504\uD69F\uC218 \uC77C\uC2DC\uC801 \uC99D\uAC00"
+  Prefabs: {fileID: 1018568453208975839, guid: f63b166e84fd3c844b931bf845a5e6bd, type: 3}
+  Type: 0
+  WhereTheConsum: 1
+  WhereTheEquip: 0
+  Icon: {fileID: 21300052, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  InteractText: "E: \uC2B5\uB4DD"
+  IsEquip: 0
+  IsConsumable: 1
+  Value: 1
+  IsStack: 1
