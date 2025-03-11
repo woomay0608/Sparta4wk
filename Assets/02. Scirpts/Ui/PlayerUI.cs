@@ -8,7 +8,7 @@ public class PlayerUI : MonoBehaviour
     
     public GameObject Jump;
     public GameObject JumpPrefabs;
-
+    private GameObject isOkWallRideUi;
 
 
     private void Start()
@@ -31,13 +31,10 @@ public class PlayerUI : MonoBehaviour
         {
             Instantiate(JumpPrefabs, Jump.transform);
         }
+        isOkWallRideUi = transform.GetChild(4).gameObject;
     }
     public void UiUpdate()
     {
-        
-        
-        
-
         int MaxJumpCount  = Jump.transform.childCount;
         int curJumpCount = Mathf.Min(PlayerManager.Instance.Player.CurJumpCount, MaxJumpCount);
 
@@ -60,10 +57,16 @@ public class PlayerUI : MonoBehaviour
             else
                 HeartImage.color = new Color(0f, 0f, 0f);
         }
+    }
 
-
-
-
-
+    public bool IsOkWallRideUISetActive()
+    {
+        isOkWallRideUi.SetActive(true);
+        return true;
+    }
+    public bool IsOkWallRideUISetUnActive()
+    {
+        isOkWallRideUi.SetActive(false);
+        return false;
     }
 }

@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            PlayerManager.Instance.PlayerUI.IsOkWallRideUISetUnActive();
             IsWall = false;
         }
     }
@@ -180,10 +181,16 @@ public class PlayerController : MonoBehaviour
     public void OnWallRide(InputValue value)
     {
         Integer = value.isPressed ? 1 : 0;
-
-
     }
 
+
+    public void OnJumpOverWall()
+    {
+        if(PlayerManager.Instance.PlayerUI.IsOkWallRideUISetActive())
+        {
+            PlayerManager.Instance.PlayerRay.JumpOverWall(PlayerManager.Instance.PlayerRay.Height);
+        }
+    }
 
 
 

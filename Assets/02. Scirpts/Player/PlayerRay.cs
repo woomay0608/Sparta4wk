@@ -17,6 +17,9 @@ public class PlayerRay : MonoBehaviour
     bool IsDestroyOk = false;
     public Ray ray;
     public RaycastHit hit;
+
+    public float Height;
+    float WallJump; 
     private void Start()
     {
         
@@ -80,19 +83,29 @@ public class PlayerRay : MonoBehaviour
                 PlayerManager.Instance.PlayerController.Rigidbody.velocity = Vector3.zero;
                 PlayerManager.Instance.PlayerController.IsWall = true;
                 BoxCollider Collider = hit.transform.GetComponent<BoxCollider>();
-                float Height = Collider.bounds.size.y;
-                float WallJump = Collider.bounds.min.y + (0.90f* Height);
+                Height = Collider.bounds.size.y;
+                WallJump = Collider.bounds.min.y + (0.90f * Height);
                 if (WallJump <=  ray.origin.y)
                 {
-                    PlayerManager.Instance.Player.transform.position = new Vector3(PlayerManager.Instance.Player.transform.position.x + 1f,
-                        PlayerManager.Instance.Player.transform.position.y + Mathf.Abs( (ray.origin.y -WallJump) * 2), PlayerManager.Instance.Player.transform.position.z);
+                    PlayerManager.Instance.PlayerUI.IsOkWallRideUISetActive();
+                }
+                else
+                {
+                    PlayerManager.Instance.PlayerUI.IsOkWallRideUISetUnActive();
                 }
             }
         }
         else
         {
+     
             PlayerManager.Instance.PlayerController.IsWall= false;
         }
+    }
+
+    public void JumpOverWall(float Height) 
+    {
+        PlayerManager.Instance.Player.transform.position = new Vector3(PlayerManager.Instance.Player.transform.position.x + 1f,
+    PlayerManager.Instance.Player.transform.position.y + Mathf.Abs(Height * 0.10f) + 1f, PlayerManager.Instance.Player.transform.position.z);
     }
 
     private IEnumerator SetText()
